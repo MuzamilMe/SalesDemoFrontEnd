@@ -1,0 +1,11 @@
+
+.navbar-brand {
+    color:darkblue;
+    position: sticky;
+    font-size: xx-large;
+    left: 50%;
+    right: 50%;
+    margin-right: 60px /*!important; 50% of your logo width*/
+   
+}
+
