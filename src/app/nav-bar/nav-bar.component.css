@@ -5,7 +5,19 @@
     font-size: xx-large;
     left: 50%;
     right: 50%;
-    margin-right: 60px /*!important; 50% of your logo width*/
+    margin-right: 60px
    
 }
+
+.search-bar{
+    position:initial;
+    /* font-size: x-large; */
+    left: 80%;
+    right: 20%;
+    margin-right: 10px
+}
+
+  
+  
+ 
 

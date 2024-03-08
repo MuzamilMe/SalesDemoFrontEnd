@@ -9,15 +9,16 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SearchBarComponent } from './search-bar/search-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     AddProductComponent,
     UpdateProductComponent,
-    ProductListComponent
-  ],
+    ProductListComponent,
+    SearchBarComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
