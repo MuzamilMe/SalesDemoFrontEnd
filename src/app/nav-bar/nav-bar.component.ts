@@ -13,8 +13,5 @@ export class NavBarComponent {
   ngOnInit() {
    
   }
-  onSubmit() {
-    // Filter items based on the search term
-   
-  }
+
 }

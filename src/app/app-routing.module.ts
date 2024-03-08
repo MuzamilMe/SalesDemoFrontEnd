@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 const routes: Routes = [
   {
     path:'listProducts', component:ProductListComponent
@@ -12,6 +13,9 @@ const routes: Routes = [
   },
   {
     path:'update-product/:id', component:UpdateProductComponent
+  },
+  {
+    path:'search-product/:name',component:SearchBarComponent
   },
  
   {

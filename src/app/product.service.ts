@@ -13,6 +13,7 @@ export class ProductService {
   private deleteURL="http://localhost:9191/products/delete"
   private updateURl="http://localhost:9191/products/update"
   private getbyIdURL="http://localhost:9191/products/getById"
+  private getByNameURL="http://localhost:9191/products/getByName"
    
   constructor(private httpClient:HttpClient) { }
   public getListProducts(): Observable<Product[]>{
@@ -44,7 +45,10 @@ export class ProductService {
   }
   getById(id:string):Observable<Product>{
     console.log(`${this.getbyIdURL}/${id}`);
-
     return this.httpClient.get<Product>( `${this.getbyIdURL}/${id}`)
+  }
+ getByName(name:string):Observable<Product>{
+    console.log(`${this.getByNameURL}/${name}`);
+    return this.httpClient.get<Product>( `${this.getByNameURL}/${name}`)
   }
 }

@@ -15,7 +15,7 @@
            <td> {{product.price}} </td>
            <td> {{product.category}} </td>
            <td>
-            <button (click)="update(product.id)" class="btn btn-light" >edit</button>
+            <button (click)="update(product.id,product)" class="btn btn-light" >edit</button>
             <button (click)="delete(product.name)" class="btn btn-light" style="margin-left: 10px;">delete</button>
         </td>        </tr>
     </tbody>

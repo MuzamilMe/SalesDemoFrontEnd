@@ -18,17 +18,15 @@ export class ProductListComponent {
     
   
   }
-   getproducts(){ 
+   public getproducts(){ 
     this.productService.getListProducts().subscribe((product:any) => {
-      // console.log(this.getproducts());
-    //   console.log(data);
      this.products=product.data;
     });
 }
- update(id:string){
+ public update(id:string,product:Product){
   this.router.navigate([`update-product`,id])
-  // this.productService.updateProduct(product);
-  // this.getproducts();
+  this.productService.updateProduct(product);
+  this.getproducts();
 
    
 }
@@ -38,9 +36,10 @@ export class ProductListComponent {
 
   },error=> console.log(error)
   );  
-  
   console.log(name);
-  
-  
 }  
+public assignData(data: any[]) {
+  this.products = data;
+}
+
 }
