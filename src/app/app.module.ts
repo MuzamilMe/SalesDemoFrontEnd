@@ -10,7 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { SalesDataComponent } from './sales-data/sales-data.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +18,8 @@ import { SalesDataComponent } from './sales-data/sales-data.component';
     AddProductComponent,
     UpdateProductComponent,
     ProductListComponent,
-    SearchBarComponent,
-    SalesDataComponent,
-    
+    SearchBarComponent
+
     ],
   imports: [
     BrowserModule,

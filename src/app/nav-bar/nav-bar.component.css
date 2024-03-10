@@ -6,18 +6,25 @@
     left: 50%;
     right: 50%;
     margin-right: 60px
-   
+
 }
 
-.search-bar{
-    position:initial;
-    /* font-size: x-large; */
-    left: 80%;
-    right: 20%;
-    margin-right: 10px
-}
+/*.search-bar{*/
+/*    position:initial;*/
+/*    !* font-size: x-large; *!*/
+/*    left: 80%;*/
+/*    right: 20%;*/
+/*    margin-right: 10px*/
+/*}*/
+/*.dropdown{*/
+/*  margin-top: 2.2px;*/
+/*  font-size: 25px;*/
+/*}*/
+/*.btn-success{*/
+/*border-left-style: dashed;*/
+/*}*/
 
-  
-  
- 
+
+
+
 

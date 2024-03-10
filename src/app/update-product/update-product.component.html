@@ -1,5 +1,8 @@
-<p>update-product works!</p>
-<form (ngSubmit)="onSubmit()">
+<div class="card" style="width: 30rem">
+<form style="display: flex; flex-direction: column;"(ngSubmit)="updateProduct(product)">
+  <div class="text-center">
+  <h2>Product Update</h2>
+  </div>
     <div class="form-group">
         <label>Product id</label>
         <input type="text" class="form-control" id="id"  [(ngModel)]="product.id" name="id" readonly>
@@ -24,5 +27,9 @@
         <input type="text" class="form-control" id="Category"
         [(ngModel)]="product.category" name="Category">
       </div>
-    <button type="submit"  class="btn btn-success">Update</button>
-  </form>
+  <div class="text-center" style="margin-top: 2px">
+    <button type="submit"  class="btn btn-success" >Update</button>
+  </div>
+</form>
+</div>
+

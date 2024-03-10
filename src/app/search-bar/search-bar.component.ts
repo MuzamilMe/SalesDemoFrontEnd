@@ -8,24 +8,29 @@ import { ProductListComponent } from '../product-list/product-list.component';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  products: Product[] = [];
+  product: any = {};
   @ViewChild(ProductListComponent) productListComponent!: ProductListComponent;
   // filteredData: Product[] = [];
-  searchQuery: string = "";
-  filteredData: Product[] = []; // Assuming this is your filtered data
-  constructor(private productService: ProductService) {}
-  onSearch(){ 
-    this.productService.getByName(this.searchQuery).subscribe((product:any) => { 
-      this.productListComponent.assignData(product); 
-     
+  searchQuery: string="";
+  constructor(private productService:ProductService) {
 
-       });
+  }
+  ngOnInit(): void {
+    // this.id = this.route.snapshot.params['id'];
+    this.productService.getByName(this.searchQuery).subscribe((data) => {
+        console.log(data);
+        this.product=data;
+        // return ResponseUtil.returnResponse('success', ' Product', this.product);
+      },
+      (error) => {
+        console.error('Error retrieving product:', error);
+      }
+    );
+  }
+  onSearch(searchQuery:string){
+    this.productListComponent.getByName(this.searchQuery);
+      // this.productListComponent.assignData(searchQuery);
+            // this.products.productListComponent.products.at(0)=data;
 }
-assignDataToProductList() {
-  // Call the assignData method of the ProductListComponent
-  this.productListComponent.assignData(this.filteredData);
-}
-
-
 }
 
