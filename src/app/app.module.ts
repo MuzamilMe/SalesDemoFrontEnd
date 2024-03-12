@@ -10,6 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MyTableComponent } from './my-table/my-table.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AddProductComponent,
     UpdateProductComponent,
     ProductListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    MyTableComponent
 
     ],
   imports: [
