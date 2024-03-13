@@ -1,25 +1,4 @@
 <div class="card" style="width: 50rem" >
-<table class="table table-sm">
-    <thead class="thead-dark">
-        <tr>
-            <th>Product Name</th>
-            <th>Product Quantity</th>
-            <th>Product Price</th>
-            <th>Product Catrgory</th>
-            <th style="text-align: right">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products ">
-        <td>{{product.name}}</td>
-            <td>{{product.qty}}</td>
-           <td> {{product.price}} </td>
-           <td> {{product.category}} </td>
-           <td>
-            <button (click)="update(product.id,product)" class="btn " style="background: transparent" ><i class="bi bi-pencil-square"></i></button>
-            <button (click)="delete(product.name)" class="btn " style="margin-left: 10px;background: transparent"><i class="bi bi-trash"></i>
-            </button>
-        </td>        </tr>
-    </tbody>
-</table>
+<app-my-table [isAction]="true"  [HeadArray]="headArray" [gridArray]="products"
+    (onEdit)="update($event.id)" (onDelete)="delete($event.name)"  ></app-my-table>
 </div>

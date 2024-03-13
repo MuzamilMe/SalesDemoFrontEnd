@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-table',
   templateUrl: './my-table.component.html',
   styleUrls: ['./my-table.component.css']
 })
-export class MyTableComponent {
+export class MyTableComponent implements OnInit {
+  
+@Input() HeadArray:{Head:string,FieldName:string}[]=[];
+@Input() gridArray:any[]=[];
+@Input() isAction:boolean=false; 
+@Output() onEdit = new EventEmitter<any>();
+@Output() onDelete = new EventEmitter<any>();
+
+constructor(){}
+ngOnInit(): void {
+  
+}
+public edit(item:any){
+this.onEdit.emit(item);
+}
+delete(item:any){
+this.onDelete.emit(item);
+}
 
 }

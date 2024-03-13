@@ -21,7 +21,6 @@ export class ProductService {
   }
   addNewProduct(product:Product):Observable<Object>{
     let form=new FormData();
-    // form.append("id",product.id);
     //names in inverted should be same as pstman names
     form.append("ProductDTOS[0].name",product.name);
     form.append("ProductDTOS[0].price",product.price);
@@ -40,15 +39,12 @@ export class ProductService {
     return this.httpClient.put(`${this.updateURl}`,form);
   }
   deleteProduct(name:string):Observable<Object>{
-    console.log(`${this.deleteURL}/${name}`);
     return this.httpClient.delete(`${this.deleteURL}/${name}`)
   }
   getById(id:string):Observable<Product>{
-    console.log(`${this.getbyIdURL}/${id}`);
     return this.httpClient.get<Product>( `${this.getbyIdURL}/${id}`)
   }
  getByName(name:string):Observable<Product>{
-    console.log(`${this.getByNameURL}/${name}`);
     return this.httpClient.get<Product>( `${this.getByNameURL}/${name}`)
   }
 }
