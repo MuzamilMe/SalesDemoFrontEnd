@@ -11,7 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MyTableComponent } from './my-table/my-table.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule}  from '@angular/material/form-field';
+import {MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +25,15 @@ import { MyTableComponent } from './my-table/my-table.component';
     UpdateProductComponent,
     ProductListComponent,
     SearchBarComponent,
-    MyTableComponent
-
-    ],
+    MyTableComponent,    
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,MatTableModule,
+    MatFormFieldModule,MatButtonModule,MatInputModule,MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

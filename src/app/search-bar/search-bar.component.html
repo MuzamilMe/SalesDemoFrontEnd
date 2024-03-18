@@ -1,12 +1,6 @@
  <div class="search-bar input">
     <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" />
     <button (click)="onSearch(searchQuery)" style="background-color: burlywood;">Search</button>
+    <app-my-table [isAction]="true"  [HeadArray]="headArray" [gridArray]="products"></app-my-table>
   </div>
-<!-- <app-product-list></app-product-list>-->
-<!-- app.component.html -->
-<!--<div>-->
-<!--  <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>-->
-<!--  Call the method to assign data to the ProductListComponent-->
-<!--  <button (click)="assignDataToProductList()">Assign Data to Product List</button>-->
-<!--  <app-product-list></app-product-list>-->
-<!--</div> -->
+

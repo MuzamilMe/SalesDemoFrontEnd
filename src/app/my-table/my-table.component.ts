@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-my-table',
@@ -10,18 +11,20 @@ export class MyTableComponent implements OnInit {
 @Input() HeadArray:{Head:string,FieldName:string}[]=[];
 @Input() gridArray:any[]=[];
 @Input() isAction:boolean=false; 
-@Output() onEdit = new EventEmitter<any>();
-@Output() onDelete = new EventEmitter<any>();
+@Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() search: EventEmitter<any> = new EventEmitter<any>();
 
-constructor(){}
+  searchQuery: string = '';
+
+constructor(private productService:ProductService){}
 ngOnInit(): void {
   
 }
-public edit(item:any){
+edit(item:any){
 this.onEdit.emit(item);
 }
 delete(item:any){
 this.onDelete.emit(item);
 }
-
 }
