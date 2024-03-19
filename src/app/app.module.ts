@@ -9,7 +9,6 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MyTableComponent } from './my-table/my-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -17,6 +16,7 @@ import {MatFormFieldModule}  from '@angular/material/form-field';
 import {MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { POSComponent } from './pos/pos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     AddProductComponent,
     UpdateProductComponent,
     ProductListComponent,
-    SearchBarComponent,
-    MyTableComponent,    
+    MyTableComponent,
+    POSComponent,    
   ],
   imports: [
     BrowserModule,

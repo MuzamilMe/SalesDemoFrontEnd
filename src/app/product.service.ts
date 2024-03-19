@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
+import { ReturnStatement } from '@angular/compiler';
 
 
 @Injectable({
@@ -14,6 +15,8 @@ export class ProductService {
   private updateURl="http://localhost:9191/products/update"
   private getbyIdURL="http://localhost:9191/products/getById"
   private getByNameURL="http://localhost:9191/products/getByName"
+  private getCategories="http://localhost:9191/products/getCategoriesOnly"
+  private getByCategory="http://localhost:9191/products/productByCategory"
 
   constructor(private httpClient:HttpClient) { }
   public getListProducts(): Observable<Product[]>{
@@ -46,5 +49,12 @@ export class ProductService {
   }
  getByName(name:string):Observable<Product>{
     return this.httpClient.get<Product>( `${this.getByNameURL}/${name}`)
+  }
+  getCategoriesOnly(){
+    return this.httpClient.get<string>(`${this.getCategories}`)
+  }
+  getProductByCategory(category:string){
+    return this.httpClient.get<Product>( `${this.getByCategory}/${category}`)
+
   }
 }
