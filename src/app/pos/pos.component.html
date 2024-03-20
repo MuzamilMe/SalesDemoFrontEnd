@@ -1,16 +1,21 @@
 <div class="row mt-3">
     <div class="col-3">
         <label for="">Select Category</label>
-        <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()" (change)="checkFirstDropdown(selectedCategory)" >
+        <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
+            (change)="checkFirstDropdown(selectedCategory)">
             <option value="">Select</option>
             <option *ngFor="let category of categories" [value]="category">{{category}}</option>
         </select>
     </div>
     <div class="col-3">
         <label for="">Select Product</label>
-        <select class="form-control" [(ngModel)]="products" >
+        <select class="form-control" [(ngModel)]="products">
             <option value="">Select</option>
             <option *ngFor="let product of products" [value]="product">{{product.name}}</option>
         </select>
     </div>
+    <div class="Container">
+        <app-my-table></app-my-table>
+    </div>
+
 </div>

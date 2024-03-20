@@ -1,7 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import {  EMPTY, toArray } from 'rxjs';
 
 
 @Component({
@@ -10,39 +9,39 @@ import {  EMPTY, toArray } from 'rxjs';
   styleUrls: ['./pos.component.css']
 
 })
-export class POSComponent implements OnInit{
-  categories:string[]=[];
-   products:Product[]=[];
+export class POSComponent implements OnInit {
+  categories: string[] = [];
+  products: Product[] = [];
   selectedCategory: string = '';
   selectedCategoryProducts: any[] = [];
 
-
- constructor(private productService:ProductService){}
-ngOnInit(){
-  this.loadData();
-}
-  loadData(){
-  this.productService.getCategoriesOnly().subscribe((category:any)=>{
-     this.categories=category.data; 
-    this.productService.getListProducts().subscribe((pr:any)=>{
-      this.products=pr.data;
-    })
-  })
-}
-checkFirstDropdown(selectedCategory: string) {
-  this.selectedCategoryProducts = this.products.filter(c => c.category === selectedCategory);
-  if(selectedCategory!=null||selectedCategory!="Select"){
-  this.getProductByCategory(selectedCategory);
+  constructor(private productService: ProductService) { }
+  ngOnInit() {
+    //it loads your first dropdown data
+    this.loadData();
   }
-}
-getProductByCategory(category:string){
-  this.productService.getProductByCategory(category).subscribe((product:any)=>{
-    this.products=product.data;
-  })
-}
-onCategoryChange() {
-  this.products = []; // Reset selected product when category changes
-}
+  loadData() {
+    this.productService.getCategoriesOnly().subscribe((category: any) => {
+      this.categories = category.data;
+    })
+  }
+  //checks first dropdown value 
+  checkFirstDropdown(selectedCategory: string) {
+    this.selectedCategoryProducts = this.products.filter(c => c.category === selectedCategory);
+    if (selectedCategory != null || selectedCategory != "Select") {
+      this.getProductByCategory(selectedCategory);
+    }
+  }
+  // its an api call in service which gets data for 2nd list
+  getProductByCategory(category: string) {
+    this.productService.getProductByCategory(category).subscribe((product: any) => {
+      this.products = product.data;
+    })
+  }
+  // on changing category first it will empty the array of products
+  onCategoryChange() {
+    this.products = []; // Reset selected product when category changes
+  }
 
 }
 
