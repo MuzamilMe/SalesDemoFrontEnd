@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
-
+err:Boolean=false;
   product:Product=new Product();
   constructor(private productService:ProductService, private router:Router){
 
@@ -16,8 +16,14 @@ export class AddProductComponent {
   ngOnInit(): void {  
   }
   onSubmit(){
-console.log(this.product);
+    if(this.product.name==""||this.product.price==""||this.product.qty==""){
+      this.err=true;
+    }else{
+      console.log(this.product);
 this.saveProduct();
+    }
+
+
   }
   saveProduct(){
     this.productService.addNewProduct(this.product).subscribe(()=> {
