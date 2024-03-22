@@ -29,7 +29,7 @@ export class POSComponent implements OnInit {
   ];
   cartItems: Cart[] = [];
   onDelete: EventEmitter<{ index: number }> = new EventEmitter<{ index: number }>();
-
+onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
   product: Product = new Product();
   constructor(private productService: ProductService) { }
   ngOnInit() {
@@ -47,6 +47,16 @@ export class POSComponent implements OnInit {
 
 
     })
+  }
+  editRow(index: number, newQty: number) {
+    // Update the quantity of the item at the specified index
+    this.cartItems[index].qty = newQty;
+  
+    // Recalculate the total sum
+    this.calculateTotal();
+  
+    // Emit an event indicating the edit
+    this.onEdit.emit({ index });
   }
   //checks first dropdown value 
   checkFirstDropdown(selectedCategory: string) {
@@ -99,6 +109,7 @@ export class POSComponent implements OnInit {
               this.errorMessage = '';
               this.cart.name = this.selectedProduct;
               this.cart.qty = Number(this.product.qty);
+              this.cart.price=Number(pro.price);
               this.cart.amount = Number(pro.price) * Number(this.product.qty);
               this.cartItems.push(this.cart);
               this.calculateTotal();
