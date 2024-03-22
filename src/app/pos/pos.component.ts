@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Cart } from '../Cart';
-import { isEmpty } from 'rxjs';
 
 
 @Component({
@@ -18,6 +17,7 @@ export class POSComponent implements OnInit {
   selectedCategory: string = '';
   selectedCategoryProducts: any[] = [];
   selectedProduct:string='';
+  total:number=0;
   headArray=[
     {'Head':'Product Name','FieldName':'name'},
     {'Head':'Price','FieldName':'price'},
@@ -55,14 +55,7 @@ export class POSComponent implements OnInit {
       }
     }
   }
-  // checkSeconedDropDown(selectedProduct:string){
-  //   for(let pr of this.products){
-  //     if(selectedProduct==pr.name){
-  //       this.cart.name=pr.name;
-  //       this.cartItems.push(this.cart);
-  //     }
-  //   }
-  // }
+
   // its an api call in service which gets data for 2nd list
   getProductByCategory(category: string) {
     this.productService.getProductByCategory(category).subscribe((product: any) => {
@@ -75,8 +68,8 @@ export class POSComponent implements OnInit {
   }
 
   addProduct(){
-    if(this.selectedProduct=='Select'){
-      console.log('sd'+this.selectedProduct);
+    if(!this.product.qty){
+
     }else{
       let existingCartItemIndex = this.cartItems.findIndex(item => item.name === this.selectedProduct);
       if (existingCartItemIndex !== -1) {
@@ -90,6 +83,7 @@ export class POSComponent implements OnInit {
    this.cart.price=Number(pro.price);
    this.cart.qty=Number(this.product.qty);
    this.cart.total=Number(pro.price)*Number(this.product.qty);
+   this.calculateTotal();
    this.cartItems.push(this.cart);
    this.cart=new Cart();
    
@@ -105,6 +99,8 @@ deleteRow(index: number) {
   // Remove the row at the specified index from the selectedProducts array
   this.cartItems.splice(index, 1);
 }
-
+calculateTotal(){
+this.total+=this.cart.total;
+}
 }
 

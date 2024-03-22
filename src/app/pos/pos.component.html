@@ -1,3 +1,4 @@
+
 <div class="row mt-4" >
     <div class="col-2" style="margin-left: 18%;">
         <label for="">Select Category</label>
@@ -14,12 +15,16 @@
             <option *ngFor="let product of selectedCategoryProducts"  [value]="product" >{{product}}</option>
         </select>
         </div>
-        <input type="text" [(ngModel)]="product.qty" [value]="product.qty" placeholder="Enter Quantity" style="width: 8pc;">
-        <button (click)="addProduct()">Add to Table</button>       
+        <input type="number" [(ngModel)]="product.qty" [value]="product.qty" placeholder="Enter Quantity" style="width: 8pc;height: fit-content;margin-top: 32px;">
+        <button (click)="addProduct()" style="width: 3pc;height: fit-content;margin-top: 32px;margin-left: 2px; text-align: center;background-color: darkolivegreen;">Add</button>       
 
     </div>
+    
     <div class="row mt-4" style="margin-left: 10px;">
             <app-my-table [HeadArray]="headArray" [gridArray]="cartItems" (onDelete)="deleteRow($event)"   ></app-my-table>
-        
-    
-    </div>
+        </div>
+        <tr >
+            <td colspan="3" >Total:</td> <!-- colspan should match the number of columns in your table -->
+            <td>{{ total }}</td>
+          </tr>
+
