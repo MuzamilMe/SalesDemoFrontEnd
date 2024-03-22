@@ -24,7 +24,7 @@ export class POSComponent implements OnInit {
     {'Head':'Product Name','FieldName':'name'},
     {'Head':'Price','FieldName':'price'},
     {'Head':'Quantity','FieldName':'qty'},
-    {'Head':'Amount','FieldName':'total'},
+    {'Head':'Amount','FieldName':'amount'},
     {'Head':'Action','FieldName':''}   
   ];
   cartItems:Cart[]=[];
@@ -70,50 +70,62 @@ export class POSComponent implements OnInit {
   }
 
   addProduct(){
+    if (this.selectedCategory === '') {
+      this.errorMessage = 'Select Category First';
+      return;
+  }
+    if (this.selectedProduct === '') {
+      this.errorMessage = 'Select Product';
+      return;
+  }
     if(!this.product.qty){
+      this.errorMessage = 'Please Enter Quantity';
+      return;
 
     }else{
       let existingCartItemIndex = this.cartItems.findIndex(item => item.name === this.selectedProduct);
+      
       if (existingCartItemIndex !== -1) {
         this.cartItems[existingCartItemIndex].qty += Number(this.product.qty);
-        this.cartItems[existingCartItemIndex].total += Number(this.product.qty) * this.cartItems[existingCartItemIndex].price;
+        this.cartItems[existingCartItemIndex].amount += Number(this.product.qty) * this.cartItems[existingCartItemIndex].price;
       }
       else{
       for(let pro of this.products){
           if(this.selectedProduct==pro.name){
             if(pro.qty<this.product.qty){
               this.errorMessage = 'Only ' + pro.qty +' '+pro.name+ ' available';
-
             }
             else{
               this.errorMessage='';
    this.cart.name=this.selectedProduct;
    this.cart.price=Number(pro.price);
    this.cart.qty=Number(this.product.qty);
-   this.cart.total=Number(pro.price)*Number(this.product.qty);
-   this.calculateTotal();
+   this.cart.amount=Number(pro.price)*Number(this.product.qty);
    this.cartItems.push(this.cart);
+   this.calculateTotal();
    this.cart=new Cart();
             }
-      
       }
   }
-
   this.product.qty='';
   this.selectedProduct='';
 }
-
 }
-
 }
 deleteRow(index: number) {
   // Emit an object containing the index and product name
-  this.onDelete.emit({ index });
-  // Remove the row at the specified index from the selectedProducts array
   this.cartItems.splice(index, 1);
+  this.onDelete.emit({ index });
+  this.calculateTotal();
 }
 calculateTotal(){
-this.total+=this.cart.total;
+  let sum=0;
+for (let item of this.cartItems) {
+  sum+= item.amount;
+}
+console.log(this.total+'sum');
+// Assign the totalSum to a variable accessible in the component
+this.total=sum;
 }
 }
 
