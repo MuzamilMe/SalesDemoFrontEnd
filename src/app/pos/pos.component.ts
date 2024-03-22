@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Cart } from '../Cart';
+import { isEmpty } from 'rxjs';
 
 
 @Component({
@@ -16,14 +17,18 @@ export class POSComponent implements OnInit {
   cart:Cart=new Cart();
   selectedCategory: string = '';
   selectedCategoryProducts: any[] = [];
+  selectedProduct:string='';
   headArray=[
     {'Head':'Product Name','FieldName':'name'},
     {'Head':'Price','FieldName':'price'},
     {'Head':'Quantity','FieldName':'qty'},
-    {'Head':'Total','FieldName':'total'},
+    {'Head':'Amount','FieldName':'total'},
     {'Head':'Action','FieldName':''}   
   ];
   cartItems:Cart[]=[];
+  onDelete: EventEmitter<{ index: number}> = new EventEmitter<{ index: number }>();
+
+  product:Product=new Product();
   constructor(private productService: ProductService) { }
   ngOnInit() {
     //it loads your first dropdown data
@@ -45,16 +50,19 @@ export class POSComponent implements OnInit {
   checkFirstDropdown(selectedCategory: string) {
     for(let pro of this.products){
       if(selectedCategory==pro.category){
-        console.log(pro.name);
             this.selectedCategoryProducts.push(pro.name);
+            console.log(selectedCategory);
       }
     }
-    // this.selectedCategoryProducts = this.products.filter(c => c.category === selectedCategory);
-    // this.productService.getListProducts().subscribe(())
-    // if (selectedCategory != null || selectedCategory != "Select") {
-    //   this.getProductByCategory(selectedCategory);
-    // }
   }
+  // checkSeconedDropDown(selectedProduct:string){
+  //   for(let pr of this.products){
+  //     if(selectedProduct==pr.name){
+  //       this.cart.name=pr.name;
+  //       this.cartItems.push(this.cart);
+  //     }
+  //   }
+  // }
   // its an api call in service which gets data for 2nd list
   getProductByCategory(category: string) {
     this.productService.getProductByCategory(category).subscribe((product: any) => {
@@ -64,16 +72,39 @@ export class POSComponent implements OnInit {
   // on changing category first it will empty the array of products
   onCategoryChange() {
     this.selectedCategoryProducts=[];
-    //this.products = []; // Reset selected product when category changes
   }
-  addProduct(product:Product){
-    console.log(product);
-    this.cart.name= product.name;
-    this.cart.price= Number(product.price);
-    this.cart.qty=Number(product.qty);
-    this.cart.total=this.cart.qty*Number(product.price);
-    this.cartItems.push(this.cart)
+
+  addProduct(){
+    if(this.selectedProduct=='Select'){
+      console.log('sd'+this.selectedProduct);
+    }else{
+      let existingCartItemIndex = this.cartItems.findIndex(item => item.name === this.selectedProduct);
+      if (existingCartItemIndex !== -1) {
+        this.cartItems[existingCartItemIndex].qty += Number(this.product.qty);
+        this.cartItems[existingCartItemIndex].total += Number(this.product.qty) * this.cartItems[existingCartItemIndex].price;
+      }
+      else{
+      for(let pro of this.products){
+      if(this.selectedProduct==pro.name){
+   this.cart.name=this.selectedProduct;
+   this.cart.price=Number(pro.price);
+   this.cart.qty=Number(this.product.qty);
+   this.cart.total=Number(pro.price)*Number(this.product.qty);
+   this.cartItems.push(this.cart);
+   this.cart=new Cart();
+   
+      }
   }
+}
+this.product.qty='';
+   this.selectedProduct='';
+}}
+deleteRow(index: number) {
+  // Emit an object containing the index and product name
+  this.onDelete.emit({ index });
+  // Remove the row at the specified index from the selectedProducts array
+  this.cartItems.splice(index, 1);
+}
 
 }
 
