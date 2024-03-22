@@ -18,6 +18,8 @@ export class POSComponent implements OnInit {
   selectedCategoryProducts: any[] = [];
   selectedProduct:string='';
   total:number=0;
+  errorMessage: string = ''; // Variable to store error message
+
   headArray=[
     {'Head':'Product Name','FieldName':'name'},
     {'Head':'Price','FieldName':'price'},
@@ -78,7 +80,13 @@ export class POSComponent implements OnInit {
       }
       else{
       for(let pro of this.products){
-      if(this.selectedProduct==pro.name){
+          if(this.selectedProduct==pro.name){
+            if(pro.qty<this.product.qty){
+              this.errorMessage = 'Only ' + pro.qty +' '+pro.name+ ' available';
+
+            }
+            else{
+              this.errorMessage='';
    this.cart.name=this.selectedProduct;
    this.cart.price=Number(pro.price);
    this.cart.qty=Number(this.product.qty);
@@ -86,13 +94,18 @@ export class POSComponent implements OnInit {
    this.calculateTotal();
    this.cartItems.push(this.cart);
    this.cart=new Cart();
-   
+            }
+      
       }
   }
+
+  this.product.qty='';
+  this.selectedProduct='';
 }
-this.product.qty='';
-   this.selectedProduct='';
-}}
+
+}
+
+}
 deleteRow(index: number) {
   // Emit an object containing the index and product name
   this.onDelete.emit({ index });
