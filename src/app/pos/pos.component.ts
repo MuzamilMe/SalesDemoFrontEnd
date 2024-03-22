@@ -13,24 +13,24 @@ import { Cart } from '../Cart';
 export class POSComponent implements OnInit {
   categories: string[] = [];
   products: Product[] = [];
-  cart:Cart=new Cart();
+  cart: Cart = new Cart();
   selectedCategory: string = '';
   selectedCategoryProducts: any[] = [];
-  selectedProduct:string='';
-  total:number=0;
+  selectedProduct: string = '';
+  total: number = 0;
   errorMessage: string = ''; // Variable to store error message
 
-  headArray=[
-    {'Head':'Product Name','FieldName':'name'},
-    {'Head':'Price','FieldName':'price'},
-    {'Head':'Quantity','FieldName':'qty'},
-    {'Head':'Amount','FieldName':'amount'},
-    {'Head':'Action','FieldName':''}   
+  headArray = [
+    { 'Head': 'Product Name', 'FieldName': 'name' },
+    { 'Head': 'Price', 'FieldName': 'price' },
+    { 'Head': 'Quantity', 'FieldName': 'qty' },
+    { 'Head': 'Amount', 'FieldName': 'amount' },
+    { 'Head': 'Action', 'FieldName': '' }
   ];
-  cartItems:Cart[]=[];
-  onDelete: EventEmitter<{ index: number}> = new EventEmitter<{ index: number }>();
+  cartItems: Cart[] = [];
+  onDelete: EventEmitter<{ index: number }> = new EventEmitter<{ index: number }>();
 
-  product:Product=new Product();
+  product: Product = new Product();
   constructor(private productService: ProductService) { }
   ngOnInit() {
     //it loads your first dropdown data
@@ -38,22 +38,22 @@ export class POSComponent implements OnInit {
   }
   loadData() {
     this.productService.getListProducts().subscribe((product: any) => {
-      this.products=product.data;
-     
-      for(let pro of product.data){
+      this.products = product.data;
+
+      for (let pro of product.data) {
         this.categories.push(pro.category)
       }
       this.categories = Array.from(new Set(this.categories));
 
-      
+
     })
   }
   //checks first dropdown value 
   checkFirstDropdown(selectedCategory: string) {
-    for(let pro of this.products){
-      if(selectedCategory==pro.category){
-            this.selectedCategoryProducts.push(pro.name);
-            console.log(selectedCategory);
+    for (let pro of this.products) {
+      if (selectedCategory == pro.category) {
+        this.selectedCategoryProducts.push(pro.name);
+        // console.log(selectedCategory);
       }
     }
   }
@@ -66,66 +66,65 @@ export class POSComponent implements OnInit {
   }
   // on changing category first it will empty the array of products
   onCategoryChange() {
-    this.selectedCategoryProducts=[];
+    this.selectedCategoryProducts = [];
   }
 
-  addProduct(){
+  addProduct() {
     if (this.selectedCategory === '') {
       this.errorMessage = 'Select Category First';
       return;
-  }
+    }
     if (this.selectedProduct === '') {
       this.errorMessage = 'Select Product';
       return;
-  }
-    if(!this.product.qty){
+    }
+    if (!this.product.qty) {
       this.errorMessage = 'Please Enter Quantity';
       return;
 
-    }else{
+    } else {
       let existingCartItemIndex = this.cartItems.findIndex(item => item.name === this.selectedProduct);
-      
+
       if (existingCartItemIndex !== -1) {
         this.cartItems[existingCartItemIndex].qty += Number(this.product.qty);
         this.cartItems[existingCartItemIndex].amount += Number(this.product.qty) * this.cartItems[existingCartItemIndex].price;
       }
-      else{
-      for(let pro of this.products){
-          if(this.selectedProduct==pro.name){
-            if(pro.qty<this.product.qty){
-              this.errorMessage = 'Only ' + pro.qty +' '+pro.name+ ' available';
+      else {
+        for (let pro of this.products) {
+          if (this.selectedProduct == pro.name) {
+            if (pro.qty < this.product.qty) {
+              this.errorMessage = 'Only ' + pro.qty + ' ' + pro.name + ' available';
             }
-            else{
-              this.errorMessage='';
-   this.cart.name=this.selectedProduct;
-   this.cart.price=Number(pro.price);
-   this.cart.qty=Number(this.product.qty);
-   this.cart.amount=Number(pro.price)*Number(this.product.qty);
-   this.cartItems.push(this.cart);
-   this.calculateTotal();
-   this.cart=new Cart();
+            else {
+              this.errorMessage = '';
+              this.cart.name = this.selectedProduct;
+              this.cart.qty = Number(this.product.qty);
+              this.cart.amount = Number(pro.price) * Number(this.product.qty);
+              this.cartItems.push(this.cart);
+              this.calculateTotal();
+              this.cart = new Cart();
             }
+          }
+        }
+        this.product.qty = '';
+        this.selectedProduct = '';
       }
+    }
   }
-  this.product.qty='';
-  this.selectedProduct='';
-}
-}
-}
-deleteRow(index: number) {
-  // Emit an object containing the index and product name
-  this.cartItems.splice(index, 1);
-  this.onDelete.emit({ index });
-  this.calculateTotal();
-}
-calculateTotal(){
-  let sum=0;
-for (let item of this.cartItems) {
-  sum+= item.amount;
-}
-console.log(this.total+'sum');
-// Assign the totalSum to a variable accessible in the component
-this.total=sum;
-}
+  deleteRow(index: number) {
+    // Emit an object containing the index and product name
+    this.cartItems.splice(index, 1);
+    this.onDelete.emit({ index });
+    this.calculateTotal();
+  }
+  calculateTotal() {
+    let sum = 0;
+    for (let item of this.cartItems) {
+      sum += item.amount;
+    }
+    // console.log(this.total+'sum');
+    // Assign the totalSum to a variable accessible in the component
+    this.total = sum;
+  }
 }
 
