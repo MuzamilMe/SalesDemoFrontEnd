@@ -23,8 +23,9 @@
     <div class="row mt-4" style="margin-left: 10px;">
             <app-my-table [HeadArray]="headArray" [gridArray]="cartItems" (onDelete)="deleteRow($event)"   ></app-my-table>
         </div>
-        <tr >
-            <td colspan="3" >Total:</td> <!-- colspan should match the number of columns in your table -->
-            <td>{{ total }}</td>
+        <div class="row mt-4" style="margin-left: 10px;background-color: #4b5320;width: 72%;height:max-content;">
+        <tr>
+            <td style="font-size: large;color: rgb(237, 247, 243);">Total:{{total}}</td> 
+            <!-- <td>{{ total }}</td> -->
           </tr>
-
+</div>
