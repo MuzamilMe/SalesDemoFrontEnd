@@ -11,6 +11,8 @@ import {Product} from "../product";
 export class UpdateProductComponent implements OnInit {
   id: any;
   product:Product=new Product();
+  categories: string[] = [];
+
   constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) {
   }
   ngOnInit(): void {
@@ -23,6 +25,19 @@ export class UpdateProductComponent implements OnInit {
         console.error('Error retrieving product:', error);
       }
     );
+    this.loadData();
+  }
+  loadData() {
+    this.productService.getListProducts().subscribe((product: any) => {
+      // this.product = product.data;
+
+      for (let pro of product.data) {
+        this.categories.push(pro.category)
+      }
+      this.categories = Array.from(new Set(this.categories));
+
+
+    })
   }
 updateProduct(product:Product){
     this.productService.updateProduct(this.id,this.product).subscribe(()=> {

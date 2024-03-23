@@ -24,10 +24,16 @@
       </div>
       <div>
         <label>Category</label>
-        <input type="text" class="form-control" id="Category"
-        [(ngModel)]="product.category" name="Category">
+
+        <input matInput type="text" [(ngModel)]="product.category" name="category" hidden="true">
+        <select class="form-control" [(ngModel)]="product.category" name="category" style="margin-top: 16px">
+          <option value="">Select</option>
+          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+
       </div>
-  <div class="text-center" style="margin-top: 2px">
+
+    <div class="text-center" style="margin-top: 2px">
     <button type="submit"  class="btn btn-success" >Update</button>
   </div>
 </form>

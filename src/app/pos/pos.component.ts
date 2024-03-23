@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
-import { Product } from '../product';
-import { Cart } from '../Cart';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {ProductService} from '../product.service';
+import {Product} from '../product';
+import {Cart} from '../Cart';
 
 
 @Component({
@@ -12,30 +12,34 @@ import { Cart } from '../Cart';
 })
 export class POSComponent implements OnInit {
   categories: string[] = [];
+  selectedCategory: string = '';
   products: Product[] = [];
   cart: Cart = new Cart();
-  selectedCategory: string = '';
   selectedCategoryProducts: any[] = [];
   selectedProduct: string = '';
   total: number = 0;
   errorMessage: string = ''; // Variable to store error message
 
   headArray = [
-    { 'Head': 'Product Name', 'FieldName': 'name' },
-    { 'Head': 'Price', 'FieldName': 'price' },
-    { 'Head': 'Quantity', 'FieldName': 'qty' },
-    { 'Head': 'Amount', 'FieldName': 'amount' },
-    { 'Head': 'Action', 'FieldName': '' }
+    {'Head': 'Product Name', 'FieldName': 'name'},
+    {'Head': 'Price', 'FieldName': 'price'},
+    {'Head': 'Quantity', 'FieldName': 'qty'},
+    {'Head': 'Amount', 'FieldName': 'amount'},
+    {'Head': 'Action', 'FieldName': ''}
   ];
   cartItems: Cart[] = [];
   onDelete: EventEmitter<{ index: number }> = new EventEmitter<{ index: number }>();
-onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
+  onEdit: EventEmitter<{ index: number }> = new EventEmitter<{ index: number }>();
   product: Product = new Product();
-  constructor(private productService: ProductService) { }
+
+  constructor(private productService: ProductService) {
+  }
+
   ngOnInit() {
     //it loads your first dropdown data
     this.loadData();
   }
+
   loadData() {
     this.productService.getListProducts().subscribe((product: any) => {
       this.products = product.data;
@@ -48,17 +52,19 @@ onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
 
     })
   }
+
   editRow(index: number, newQty: number) {
     // Update the quantity of the item at the specified index
     this.cartItems[index].qty = newQty;
-  
+
     // Recalculate the total sum
     this.calculateTotal();
-  
+
     // Emit an event indicating the edit
-    this.onEdit.emit({ index });
+    this.onEdit.emit({index});
   }
-  //checks first dropdown value 
+
+  //checks first dropdown value
   checkFirstDropdown(selectedCategory: string) {
     for (let pro of this.products) {
       if (selectedCategory == pro.category) {
@@ -74,6 +80,7 @@ onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
       this.products = product.data;
     })
   }
+
   // on changing category first it will empty the array of products
   onCategoryChange() {
     this.selectedCategoryProducts = [];
@@ -98,18 +105,16 @@ onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
       if (existingCartItemIndex !== -1) {
         this.cartItems[existingCartItemIndex].qty += Number(this.product.qty);
         this.cartItems[existingCartItemIndex].amount += Number(this.product.qty) * this.cartItems[existingCartItemIndex].price;
-      }
-      else {
+      } else {
         for (let pro of this.products) {
           if (this.selectedProduct == pro.name) {
             if (pro.qty < this.product.qty) {
               this.errorMessage = 'Only ' + pro.qty + ' ' + pro.name + ' available';
-            }
-            else {
+            } else {
               this.errorMessage = '';
               this.cart.name = this.selectedProduct;
               this.cart.qty = Number(this.product.qty);
-              this.cart.price=Number(pro.price);
+              this.cart.price = Number(pro.price);
               this.cart.amount = Number(pro.price) * Number(this.product.qty);
               this.cartItems.push(this.cart);
               this.calculateTotal();
@@ -122,12 +127,14 @@ onEdit:EventEmitter<{index:number}>=new EventEmitter<{index:number}>();
       }
     }
   }
+
   deleteRow(index: number) {
     // Emit an object containing the index and product name
     this.cartItems.splice(index, 1);
-    this.onDelete.emit({ index });
+    this.onDelete.emit({index});
     this.calculateTotal();
   }
+
   calculateTotal() {
     let sum = 0;
     for (let item of this.cartItems) {
