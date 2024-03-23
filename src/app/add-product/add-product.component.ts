@@ -1,38 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
-import { ProductService } from '../product.service';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Product} from '../product';
+import {ProductService} from '../product.service';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
-err:Boolean=false;
-  product:Product=new Product();
-  constructor(private productService:ProductService, private router:Router){
+  err: Boolean = false;
+  product: Product = new Product();
+  categories: string[] = [];
+
+  constructor(private productService: ProductService, private router: Router) {
 
   }
-  ngOnInit(): void {  
+
+  ngOnInit(): void {
+    this.loadData();
   }
-  onSubmit(){
-    if(this.product.name==""||this.product.price==""||this.product.qty==""){
-      this.err=true;
-    }else{
+  loadData() {
+    this.productService.getListProducts().subscribe((products: any) => {
+      for (let pro of products.data) {
+        this.categories.push(pro.category)
+      }
+      this.categories = Array.from(new Set(this.categories));
+
+
+    })
+  }
+  onSubmit() {
+    if (this.product.name == "" || this.product.price == "" || this.product.qty == "") {
+      this.err = true;
+    } else {
       console.log(this.product);
-this.saveProduct();
+      this.saveProduct();
     }
-
-
   }
-  saveProduct(){
-    this.productService.addNewProduct(this.product).subscribe(()=> {
+
+  saveProduct() {
+    this.productService.addNewProduct(this.product).subscribe(() => {
       // console.log(data);
       this.goToProductList();
-    },error=> console.log(error));
+    }, error => console.log(error));
   }
 
-  goToProductList(){
+  goToProductList() {
     this.router.navigate(['/listProducts'])
   }
 

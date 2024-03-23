@@ -17,6 +17,7 @@ import {MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { POSComponent } from './pos/pos.component';
+import {MatSelectModule} from "@angular/material/select";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,16 +26,16 @@ import { POSComponent } from './pos/pos.component';
     UpdateProductComponent,
     ProductListComponent,
     MyTableComponent,
-    POSComponent,    
+    POSComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,MatTableModule,
-    MatFormFieldModule,MatButtonModule,MatInputModule,MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule, MatTableModule,
+        MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

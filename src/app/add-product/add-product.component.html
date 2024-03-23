@@ -6,7 +6,7 @@
     </div>
   </div>
   </div>
- <form (ngSubmit)="onSubmit()" >  
+ <form (ngSubmit)="onSubmit()" >
   <div class="mb-3" >
     <mat-form-field appearance="fill">
       <mat-label>Product Name</mat-label>
@@ -28,8 +28,22 @@
   <div class="mb-3">
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
-      <input matInput type="text" [(ngModel)]="product.category" name="category">
+
+      <input matInput type="text" [(ngModel)]="product.category" name="category" hidden="true">
+      <select class="form-control" [(ngModel)]="product.category" name="category" style="margin-top: 16px">
+        <option value="">Select</option>
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
     </mat-form-field>
   </div>
-    <button mat-raised-button type="submit" class="btn">Add</button>
+<!-- -->
+<!--   <div class="row mb-3" >-->
+<!--     <div class="col-2" >-->
+<!--       <label for="">Select Category</label>-->
+<!--       <select class="form-control" [(ngModel)]="product.category">-->
+<!--         <option value="">Select</option>-->
+<!--         <option *ngFor="let category of categories" [value]="category">{{category}}</option>-->
+<!--       </select>-->
+<!--     </div></div>-->
+       <button mat-raised-button type="submit" class="btn">Add</button>
 </form>
