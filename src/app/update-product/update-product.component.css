@@ -1,4 +1,90 @@
-.card{
-  left: 30%;background: rgb(192, 222, 222);
+html {
+  height: 100%;
+  color: white;
 }
 
+body {
+  margin:0;
+  padding:0;
+  color:#f8fbff;
+  font-family: sans-serif;
+  /*background: linear-gradient(#031b46, #057dff);*/
+}
+
+.card {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  background: rgb(13, 13, 99);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.card h2 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label  {
+  color: #ffffff;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.form-control:focus {
+  border-bottom-color: #03e9f4;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.btn-anim4 {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  background: rgba(255, 176, 44, 0.59);
+  border: 2px solid #03e9f4;
+  border-radius: 5px;
+}
+
+.btn-anim4:hover {
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 5px #03e9f4,
+  0 0 25px #03e9f4,
+  0 0 50px #03e9f4,
+  0 0 100px #03e9f4;
+}
+.form-control option {
+  color: black; /* Change the color to black or any other color that contrasts with the background */
+}
