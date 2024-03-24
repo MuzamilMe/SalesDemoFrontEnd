@@ -1,12 +1,14 @@
-<div *ngIf="err">
-  <div>
-    <div class="alert" style="width: 30%;">
+<div class="card">
+  <div *ngIf="err">
+    <div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       Enter Data
     </div>
   </div>
-  </div>
  <form (ngSubmit)="onSubmit()" >
+   <div>
+     <h1>Add Product</h1>
+   </div>
   <div class="mb-3" >
     <mat-form-field appearance="fill">
       <mat-label>Product Name</mat-label>
@@ -27,15 +29,15 @@
   </div>
   <div class="mb-3">
     <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
+      <mat-label>Select Category</mat-label>
 
       <input matInput type="text" [(ngModel)]="product.category" name="category" hidden="true">
-      <select class="form-control" [(ngModel)]="product.category" name="category" style="margin-top: 16px">
-        <option value="">Select</option>
+      <select class="form-control" [(ngModel)]="product.category" name="category" >
+<!--        <option value="">Select</option>-->
         <option *ngFor="let category of categories" [value]="category">{{category}}</option>
       </select>
     </mat-form-field>
   </div>
-
-       <button mat-raised-button type="submit" class="btn">Add</button>
+       <button mat button type="submit" class="btn">Add</button>
 </form>
+</div>

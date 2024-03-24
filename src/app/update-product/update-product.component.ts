@@ -41,8 +41,8 @@ export class UpdateProductComponent implements OnInit {
   }
 updateProduct(product:Product){
     this.productService.updateProduct(this.id,this.product).subscribe(()=> {
-      this.router.navigate(['/listProducts']);
-    },error=> console.log(error));
+      this.goToProductList();
+},error=> console.log(error));
   }
 
   goToProductList(){

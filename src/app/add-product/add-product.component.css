@@ -1,29 +1,106 @@
-.mat-mdc-raised-button:not(:disabled) {
-    background-color: #68eb40;
-    
+
+.card {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  background: rgb(13, 13, 99);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  padding: 40px;
+align-items: center;
 }
-/* The alert message box */
+.card h1 {
+
+  color: #fff;
+  text-align: center;
+
+}
 .alert {
-    /* position: absolute;
-    padding: 20px; */
-    background-color: #f44336; /* Red */
-    color: #ffffff;
-    margin-top: 12px;
-  }
-  
-  /* The close button */
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
-    color: black;
-  }
+  /*padding: 10px;*/
+  /*background-color: rgba(244, 67, 54, 0);*/
+  color: #e60303;
+  /*margin-bottom: 15px;*/
+  /*width: 100%;*/
+  /*border-radius: 10px;*/
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-label {
+  color: #000;
+}
+
+.mat-input-element {
+  color: #000;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background: transparent;
+}
+
+.form-control:focus {
+  border-bottom-color: #03e9f4;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 5px 20px;
+  color: #131919;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 5px;
+  letter-spacing: 4px;
+  background: rgba(255, 176, 44, 0.59);
+  border: 2px solid #03e9f4;
+  border-radius: 8px;
+  margin-left: 45px;
+}
+
+.btn:hover {
+  color: #ffc44f;
+  border-color: #fff;
+  box-shadow: 0 0 5px #03e9f4,
+  0 0 25px #03e9f4,
+  0 0 50px #03e9f4,
+  0 0 100px #03e9f4;}
