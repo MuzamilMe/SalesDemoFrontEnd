@@ -4,6 +4,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { POSComponent } from './pos/pos.component';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 const routes: Routes = [
   {
     path:'listProducts', component:ProductListComponent
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path:'pos',component:POSComponent
+  },
+  {
+    path:'SalesReport',component:SalesReportComponent
   }
 ]
 

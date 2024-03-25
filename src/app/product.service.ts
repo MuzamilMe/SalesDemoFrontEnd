@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
 import { ReturnStatement } from '@angular/compiler';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ProductService {
   private getByNameURL="http://localhost:9191/products/getByName"
   private getCategories="http://localhost:9191/products/getCategoriesOnly"
   private getByCategory="http://localhost:9191/products/productByCategory"
+  private getSales="http://localhost:9191/sale/saleByDate/2024-02-28"
 
   constructor(private httpClient:HttpClient) { }
   public getListProducts(): Observable<Product[]>{
@@ -55,5 +57,8 @@ export class ProductService {
   getProductByCategory(category:string){
     return this.httpClient.get<Product>( `${this.getByCategory}/${category}`)
 
+  }
+  getSalesReport(){
+    return this.httpClient.get(`${this.getSales}`)
   }
 }

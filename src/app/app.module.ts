@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { POSComponent } from './pos/pos.component';
 import {MatSelectModule} from "@angular/material/select";
+import { SalesReportComponent } from './sales-report/sales-report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import {MatSelectModule} from "@angular/material/select";
     ProductListComponent,
     MyTableComponent,
     POSComponent,
+    SalesReportComponent,
   ],
     imports: [
         BrowserModule,

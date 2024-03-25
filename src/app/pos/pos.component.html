@@ -3,7 +3,7 @@
 <div  *ngIf="errorMessage" class="error-message" >{{ errorMessage }}</div>
 <div class="row mt-4" >
     <div class="col-2" style="margin-left: 18%;">
-        <label for="">Select Category</label>
+        <label for="" class="label">Select Category</label>
         <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
             (change)="checkFirstDropdown(selectedCategory)">
             <option value="">Select</option>
@@ -11,7 +11,7 @@
         </select>
     </div>
     <div class="col-2" >
-        <label for="">Select Product</label>
+        <label for="" class="label">Select Product</label>
         <select class="form-control" [(ngModel)]="selectedProduct"  >
             <option value="">Select</option>
             <option *ngFor="let product of selectedCategoryProducts"  [value]="product" >{{product}}</option>
@@ -24,7 +24,6 @@
     
     <div class="row mt-4" style="margin-left: 10px;">
             <app-my-table [HeadArray]="headArray" [gridArray]="cartItems" (onDelete)="deleteRow($event)"   >
-
             </app-my-table>
              
         </div>
