@@ -38,7 +38,6 @@ export class ProductService {
     form.append("price",product.price);
     form.append("qty",product.qty);
     form.append("category",product.category);
-
     return this.httpClient.put(`${this.updateURl}`,form);
   }
   deleteProduct(name:string):Observable<Object>{

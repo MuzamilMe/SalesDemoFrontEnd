@@ -1,5 +1,5 @@
 
-.navbar-brand {
+/* .navbar-brand {
     color:darkblue;
     position: sticky;
     font-size: xx-large;
@@ -8,23 +8,203 @@
     margin-right: 60px
 
 }
+.bi.bi-house {
+    font-size: 34px;
+    margin-right: 10px; 
+  }
+  
+  .bi.bi-plus-square-fill {
+    font-size: 34px;
+    margin-right: 10px; 
+  }
+  
+  .btn.btn-md.dropdown-toggle {
+    font-size: 24px;
+  } */
+  /* Variables */
+/* :root {
+    --borderRadius: 10px;
+    --spacer: 1rem;
+    --primary: #C4151C;
+    --text: #fff;
+    --linkHeight: calc(var(--spacer) * 3.5);
+    --timing: 250ms;
+    --linkWidth: 10rem;
+    --transition: var(--timing) ease all;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+  
+  body {
+    background: #000 url(https://unsplash.it/1600/1000/?random);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #a7d5f7;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: var(--text);
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item {
+    list-style: none;
+    margin-right: 20px;
+  }
+  
+  .nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--primary);
+  }
+  
+  .dropdown-toggle {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text);
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .dropdown-menu {
+    background-color: #a7d5f7;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-item {
+    color: var(--text);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #81c5f7;
+    color: var(--primary);
+  } */
+  /* Variables */
+:root {
+    --primary: #C4151C;
+    --text: #fff;
+  }
+  
+  /* Import Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+  
+  /* Body Styles */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #f2f2f2;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+}  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration:none;
+  }
+  .navbar-brand:hover {
+    font-size: 2rem;
 
-/*.search-bar{*/
-/*    position:initial;*/
-/*    !* font-size: x-large; *!*/
-/*    left: 80%;*/
-/*    right: 20%;*/
-/*    margin-right: 10px*/
-/*}*/
-/*.dropdown{*/
-/*  margin-top: 2.2px;*/
-/*  font-size: 25px;*/
-/*}*/
-/*.btn-success{*/
-/*border-left-style: dashed;*/
-/*}*/
-
-
-
-
-
+    box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e8f4d2,
+    0 0 100px #03e9f4;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item {
+    list-style: none;
+  }
+  
+  .nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #f8f9fa;
+    box-shadow: 0 0 5px #f8f9fa,
+    0 0 25px #f8f9fa,
+    0 0 50px #f8f9fa,
+    0 0 100px #b4f403;  
+}
+  
+  .dropdown-toggle {
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .dropdown-menu {
+    background-color: var(--primary);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-item {
+    color: var(--text);
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  .dropdown:hover{
+    color: #f8f9fa;
+    box-shadow: 0 0 5px #f8f9fa,
+    0 0 25px #f8f9fa,
+    0 0 50px #f8f9fa,
+    0 0 100px #b4f403; 
+  }
+  
+  .dropdown-item:hover {
+    background-color: #b80924;
+    color: #f8f9fa;
+  }
+  
