@@ -28,8 +28,8 @@ export class ProductListComponent {
     this.getproducts();
   }
   applySearchFilter() {
-    console.log('Search term:', this.searchQuery);
-    console.log('Products:', this.products);
+    // console.log('Search term:', this.searchQuery);
+    // console.log('Products:', this.products);
   
     // Check if the search term is empty
     if (this.searchQuery.trim() === '') {
@@ -40,7 +40,7 @@ export class ProductListComponent {
       // Check if this.products is an array before filtering
       if (Array.isArray(this.products)) {
         this.filteredProducts = this.products.filter(product =>
-          product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+          product.name.toUpperCase().includes(this.searchQuery.toUpperCase())
         );
       } else {
         console.error('Products is not an array:', this.products);
@@ -48,12 +48,12 @@ export class ProductListComponent {
       }
     }
   
-    console.log('Filtered products:', this.filteredProducts);
+    // console.log('Filtered products:', this.filteredProducts);
   }
  
 
   onSearch() {
-    console.log('Search term:', this.searchQuery);
+    // console.log('Search term:', this.searchQuery);
     // Call applySearchFilter() or any other method to filter/search based on the search term
     this.applySearchFilter();
   }

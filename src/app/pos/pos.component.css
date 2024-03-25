@@ -6,3 +6,28 @@
     margin-left: 15px;
 
 }
+.row1{
+    margin-left: 17.2%;
+    width: 63.5%;
+    background-color: #4b5320;
+    height:max-content;
+    font-size: larger;color: rgb(237, 247, 243);
+}
+.row{
+    margin-left: 10%;
+}
+.Addbtn{
+    width: 3pc;
+    height: fit-content;
+    margin-top: 32px;
+    margin-left: 2px; 
+    text-align: center;
+    background-color: darkolivegreen;
+    color: aliceblue;
+    font-weight: 400;
+}
+.error-message{
+    color: red;
+    font-weight: 400;
+    text-align: center;
+}

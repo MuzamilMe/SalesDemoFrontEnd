@@ -1,7 +1,6 @@
 
 
-<div *ngIf="errorMessage" class="error-message" style="color: red;text-align: center;">{{ errorMessage }}</div>
-
+<div  *ngIf="errorMessage" class="error-message" >{{ errorMessage }}</div>
 <div class="row mt-4" >
     <div class="col-2" style="margin-left: 18%;">
         <label for="">Select Category</label>
@@ -19,15 +18,19 @@
         </select>
         </div>
         <input type="number" [(ngModel)]="product.qty" [value]="product.qty" placeholder="Enter Quantity" style="width: 8pc;height: fit-content;margin-top: 32px;">
-        <button (click)="addProduct()" style="width: 3pc;height: fit-content;margin-top: 32px;margin-left: 2px; text-align: center;background-color: darkolivegreen;">Add</button>       
+        <button class="Addbtn" (click)="addProduct()" >Add</button>       
 
     </div>
     
     <div class="row mt-4" style="margin-left: 10px;">
-            <app-my-table [HeadArray]="headArray" [gridArray]="cartItems" (onDelete)="deleteRow($event)"   ></app-my-table>
+            <app-my-table [HeadArray]="headArray" [gridArray]="cartItems" (onDelete)="deleteRow($event)"   >
+
+            </app-my-table>
+             
         </div>
-        <div class="row mt-4" style="margin-left: 10px;background-color: #4b5320;width: 72%;height:max-content;">
-        <tr>
-            <td style="font-size: large;color: rgb(237, 247, 243);">Total:{{total}}</td> 
-          </tr>
+        <div class="row1" >
+            <tr>
+                <td >Total:{{total}}</td> 
+            
+            </tr>
 </div>
