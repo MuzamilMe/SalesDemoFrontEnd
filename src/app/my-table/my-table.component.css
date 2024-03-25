@@ -1,3 +1,11 @@
 .btn-sm:hover {
    opacity: 60%;
 }
+.field-container:hover {
+    transform: scale(1.1); /* Increase size on hover */
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+  }
+  
+  .field-container {
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+  }

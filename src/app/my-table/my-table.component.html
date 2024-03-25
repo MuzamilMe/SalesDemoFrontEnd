@@ -1,6 +1,8 @@
-<div class="card" style="width: 50rem" >
+<div class="card" style="width: 50rem;margin-top: 2%;">
 
-    <table class="table table-sm">
+    <table class="table table-sm" cellpadding="0" cellspacing="0" >
+        <div class="tbl-header">
+
         <thead>
             <tr>
                 <th>Sr</th>
@@ -8,13 +10,14 @@
                  </tr>
                 
         </thead>
-
+</div>        
+        <div class="tbl-content">
          <tbody>
 
-            <tr *ngFor="let item of gridArray; let sr=index ">
+            <tr  *ngFor="let item of gridArray; let sr=index ">
                 <td>{{sr+1}}</td>
             <td *ngFor="let head of HeadArray">
-                <div *ngIf="head.FieldName!=''">
+                <div *ngIf="head.FieldName!=''" class="field-container" >
                     {{item[head.FieldName]}}                
                 </div>
 
@@ -26,8 +29,11 @@
             </tr>
            
         </tbody> 
-    </table>
     </div>
+    <div class="made-with-love">
+  Made with
+  <i>♥</i> by
+  <a target="_blank" href="https://codepen.io/nikhil8krishnan">Nikhil Krishnan</a>
+</div>
     
-
  
