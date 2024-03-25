@@ -1,6 +1,5 @@
-<div class="card" style="width: 50rem" >
-    <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (input)="onSearch()">
-
+<!-- <div class="card" style="width: 50rem;margin-top: 2%;" > -->
+    <input class="search-bar" type="text" [(ngModel)]="searchQuery" placeholder="Search..." (input)="onSearch()" style="width: 20rem;margin-top: 1%;">
 <app-my-table [isAction]="true"  [HeadArray]="headArray" [gridArray]="filteredProducts"
     (onEdit)="update($event.id)" (onDelete)="delete($event.name)"   ></app-my-table>
-</div>
+<!-- </div> -->
