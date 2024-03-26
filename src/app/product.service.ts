@@ -18,7 +18,7 @@ export class ProductService {
   private getByNameURL="http://localhost:9191/products/getByName"
   private getCategories="http://localhost:9191/products/getCategoriesOnly"
   private getByCategory="http://localhost:9191/products/productByCategory"
-  private getSales="http://localhost:9191/sale/saleByDate/2024-02-28"
+  private getSales="http://localhost:9191/sale/Sales"
 
   constructor(private httpClient:HttpClient) { }
   public getListProducts(): Observable<Product[]>{

@@ -1,0 +1,8 @@
+h1{
+    padding-top: 1%;
+text-align: center;
+color: aliceblue;
+}
+h1:hover{
+opacity: 60%;
+}
