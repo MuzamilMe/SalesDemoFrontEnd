@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Sale } from '../Sale';
 import { Product } from '../product';
+import { TableColumn } from "../TableCoulmn";
 
 @Component({
   selector: 'app-sales-report',
@@ -9,85 +10,47 @@ import { Product } from '../product';
   styleUrls: ['./sales-report.component.css']
 })
 export class SalesReportComponent implements OnInit {
-  headArray = [
-    {'Head': 'Product Name', 'FieldName': 'productname'},
-    {'Head': 'Price', 'FieldName': 'price'},
-    {'Head': 'Quantity', 'FieldName': 'qty'},
-    {'Head': 'Amount', 'FieldName': 'totalAmount'},
-    {'Head': 'Date', 'FieldName': 'date'}
+  columns: TableColumn[] = [
+    { 'caption': 'Product Name', 'field': 'productName', 'label': '', isClickable: false, 'imageSrc': '' },
+    { 'caption': 'Price', 'field': 'price', 'label': '', isClickable: false, 'imageSrc': '' },
+    { 'caption': 'Quantity', 'field': 'qty', 'label': '', isClickable: false, 'imageSrc': '' },
+    { 'caption': 'Amount', 'field': 'totalAmount', 'label': '', isClickable: false, 'imageSrc': '' },
+    { 'caption': 'Date', 'field': 'date', 'label': '', isClickable: false, 'imageSrc': '' },
+
   ];
-  sales:Sale[]=[];
-  sale:Sale=new Sale(); 
-  products:Product[]=[];
-  product:Product=new Product();
-  // productname:string="";
 
+  sales: Sale[] = [];
+  sal:Sale=new Sale();
 
-  constructor(private service:ProductService){}
+  constructor(private service: ProductService) { }
+
   ngOnInit() {
-    //it loads your first dropdown data
+    // Load sales data
     this.loadData();
   }
-  getFieldNamesFromProducts(product:Product[]) {
-    // Assuming products array is populated somewhere
-    // Iterate over the products array
-    product.forEach((product: Product) => {
-      // Get the FieldName value from each product
-      // this.sale.products.push(product);
-      console.log(product);
-      this.sale.products.push(product);
-        
-      console.log(this.sale.products); // You can do whatever you need with fieldName
-    });
-    this.sales.push(this.sale);
-    // console.log(this.sales);
-  }
 
-  loadData(){
-this.service.getSalesReport().subscribe((sale:any)=>{
-  this.sales=sale;
-  console.log(this.sales);
-  // this.sale.products=sale;
-  // this.getFieldNamesFromProducts(this.sale.products);
-  this.sales.forEach((sale: Sale) => {
-    // Get the FieldName value from each product
-    // this.sale.products.push(product);
-    this.sale=sale;
+  loadData() {
+    this.service.getSalesReport().subscribe((sales: any) => {
+      sales.forEach((sale: any) => {
+        sale.products.forEach((product: any) => {
+          this.sal.productName=product.name;
+          this.sal.price=product.price;
+          this.sal.qty=sale.qty;
+          this.sal.date=sale.date;
+          this.sal.totalAmount=sale.totalAmount;
+          this.sales.push(this.sal);
+          this.sal=new Sale();
 
-    console.log(sale);
-    // this.sale.products.push(product);
+
+          // console.log(sales);
+          // const productInfo = {
+          //   sales:product.name,
+          //   price: product.price,
+          //   date:sale.date,
+          //   qty: sale.qty as number, // Assuming qty is a number
+          //   totalAmount: sale.totalAmount as number // Assuming totalAmount is a number
+          // };
         });
-  // this.sales.push(this.sale);
-
- //ex loop
-//  for (let pro of product.data) {
-//   this.categories.push(pro.category)
-// }
-// this.categories = Array.from(new Set(this.categories));
-
-
-// })
-
-
-  // for(let sale of this.sales){
-  //     //  this.products.push(sale.products)
-  //     for(let spr of sale.products){
-  //       this.products.push(spr)
-  //     }
-
-
-  //   }
-    // console.log(this.products);
-
-    // this.products.push(this.product);
-
-
-    // for(let pro of this.products){
-    //   console.log(pro.name);
-    // }
- 
-})
-
-}
-
-}
+      });
+    });
+  }}

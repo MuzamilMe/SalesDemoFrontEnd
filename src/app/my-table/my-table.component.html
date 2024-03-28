@@ -1,37 +1,86 @@
-<section>
-    <div class="tbl-header" >
-        <table cellpadding="0" cellspacing="0" >
-        <thead>
-            <tr>
-                <th>Sr</th>
-                <th *ngFor="let head of HeadArray">{{head.Head}}</th>
-                 </tr>
-                
-        </thead>
-    </table>
-</div>
-<div class="tbl-container">
-<div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-         <tbody>
-
-            <tr *ngFor="let item of gridArray; let sr=index ">
-                <td>{{sr+1}}</td>
-            <td *ngFor="let head of HeadArray">
-                <div *ngIf="head.FieldName!=''" class="field-container" >
-                    {{item[head.FieldName]}}                
-                </div>
-
-                <div *ngIf="head.FieldName==''" style="margin-left:-5px;">
-                      <button class="btn btn-sm btn-danger"  (click)="delete(item)"><i class="bi bi-trash"></i></button>    
-                      <button class="btn btn-sm btn-primary" (click)="edit(item)" style="margin-left:10px"><i class="bi bi-pencil-square"></i></button>              
-                </div>
-            </td>
-            </tr>
-           
-        </tbody> 
-    </table>
+<table mat-table class="table border " [dataSource]="_dataSource" matSort>
+  <ng-container *ngFor="let c of columns" matColumnDef={{c.caption}}>
+    <div *ngIf="c.caption==='Action'">
+      <th mat-header-cell *matHeaderCellDef>{{ c.caption }}</th>
     </div>
-</div>
+    <div *ngIf="c.caption!=='Action'">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="{{c.field}}">{{ c.caption }}</th>
+    </div>
+    <td mat-cell *matCellDef="let element">
 
-  
+      <div *ngIf="!c.isClickable" [innerHTML]="getDataByField(element, c.field)"></div>
+
+      <ng-container *ngIf="c.caption==='Action'" class="bg-white">
+        <div *ngIf="c.field!=null">
+          <!--          <button [disabled]="!viewButtonEnabled" [ngStyle]="{'border':'none'}" *ngIf="c.field.includes('view')" class="btn btn-sm"><img src="" (click)="clickOnView.emit(element)" alt="cross icon"></button>-->
+          <button [disabled]="!updateButtonEnabled" [ngStyle]="{'border':'none'}" *ngIf="c.field.includes('edit')"
+                  class="btn btn-sm">
+<!--            <img src="../../../assets/edit.png"-->
+<!--                 alt="edit button"-->
+<!--                 (click)="clickOnEdit.emit(element)">-->
+            <i class="material-icons" style="margin-left: -15px" (click)="clickOnEdit.emit(element)" >edit</i>
+
+          </button>
+          <button [disabled]="!deleteButtonEnabled" [ngStyle]="{'border':'none'}" *ngIf="c.field.includes('delete')"
+                  class="btn btn-sm">
+            <!--            <img-->
+            <!--            src=""-->
+            <!--            alt="delete button"-->
+            <!--            (click)="clickOnDelete.emit(element)">-->
+            <i class="material-icons" (click)="clickOnDelete.emit(element)">delete</i>
+          </button>
+        </div>
+        <div *ngIf="c.field==null || c.field=='Action' || c.field=='action' || c.field==''" class="position">
+          <!--          <button class="btn btn-sm"><img src="../../../assets/icons/eye.svg" (click)="clickOnView.emit(element)"-->
+          <!--                                          alt="cross icon"></button>-->
+          <button class="btn btn-sm">
+            <mat-icon>edit</mat-icon>
+
+            <img src="../../../assets/edit.png" alt="edit button"
+                 (click)="clickOnEdit.emit(element)"></button>
+          <button class="btn btn-sm"><img src="../../../assets/delete.png" alt="delete button"
+                                          (click)="clickOnDelete.emit(element)"></button>
+        </div>
+      </ng-container>
+      <!-- <ng-container *ngIf="c.isClickable" class="bg-white">
+        <div *ngIf="c.imageSrc!=null">
+          <img src="{{c.imageSrc}}" alt="{{c.field}}">
+        </div>
+        <div *ngIf="c.field!=null">
+          <a [routerLink]='getDataByField(element, c.field)'>{{c.label}}</a>
+        </div>
+      </ng-container>
+    </td> -->
+      <ng-container *ngIf="c.isClickable" class="bg-white">
+        <div *ngIf="c.imageSrc!=null">
+          <img [src]="c.imageSrc" [alt]="c.field">
+        </div>
+        <div *ngIf="c.field!=null">
+          <a [routerLink]="c.isClickable? getDataByField(element, c.field): null">{{c.label}}</a>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!c.isClickable" class="bg-gray">
+        <div *ngIf="c.field!=null">
+          <span>{{c.label}}</span>
+        </div>
+      </ng-container>
+
+    </td>
+  </ng-container>
+  <thead>
+
+  <tr class="thead" mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+      [ngClass]="{'striped-row': i%2==0, 'white-row': i%2==1}" class="custom-cell"></tr>
+  </thead>
+  <tr class="mat-row">
+    <td class="mat-cell bg-white" colspan="displayedColumns.length"> Data not Found</td>
+  </tr>
+</table>
+
+<mat-paginator class="page" *ngIf="pagination" [pageSizeOptions]="[20,40,60]" showFirstLastButtons
+               aria-label="Select pages">
+</mat-paginator>
+
+

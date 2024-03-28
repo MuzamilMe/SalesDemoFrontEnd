@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import {TableColumn} from "../TableCoulmn";
 
 @Component({
   selector: 'app-product-list',
@@ -10,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent {
   products:Product[]=[];
-  headArray=[
-    {'Head':'Product Name','FieldName':'name'},
-    {'Head':'Price','FieldName':'price'},
-    {'Head':'Quantity','FieldName':'qty'},
-    {'Head':'Category','FieldName':'category'},
-    {'Head':'Action','FieldName':''}   
-   
+  columns:TableColumn[]=[
+    {'caption': 'Product Name', 'field': 'name'},
+    {'caption': 'Price', 'field': 'price'},
+    {'caption': 'Quantity', 'field': 'qty'},
+    {'caption': 'Category', 'field': 'category'},
+    {'caption': 'Action', 'field': 'edit , delete'}
+
   ];
   searchQuery: string = '';
   filteredProducts: any[] = [];
@@ -30,7 +31,7 @@ export class ProductListComponent {
   applySearchFilter() {
     // console.log('Search term:', this.searchQuery);
     // console.log('Products:', this.products);
-  
+
     // Check if the search term is empty
     if (this.searchQuery.trim() === '') {
       // If the search term is empty, display all products
@@ -47,10 +48,10 @@ export class ProductListComponent {
         // Handle the case where products is not an array
       }
     }
-  
+
     // console.log('Filtered products:', this.filteredProducts);
   }
- 
+
 
   onSearch() {
     // console.log('Search term:', this.searchQuery);

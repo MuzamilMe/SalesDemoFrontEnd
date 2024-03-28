@@ -9,7 +9,6 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MyTableComponent } from './my-table/my-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule}  from '@angular/material/form-field';
@@ -19,6 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { POSComponent } from './pos/pos.component';
 import {MatSelectModule} from "@angular/material/select";
 import { SalesReportComponent } from './sales-report/sales-report.component';
+import {MyTableComponent} from "./my-table/my-table.component";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,18 +28,18 @@ import { SalesReportComponent } from './sales-report/sales-report.component';
     AddProductComponent,
     UpdateProductComponent,
     ProductListComponent,
-    MyTableComponent,
     POSComponent,
+    MyTableComponent,
     SalesReportComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        BrowserAnimationsModule, MatTableModule,
-        MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule, MatTableModule,
+    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {Cart} from '../Cart';
+import {TableColumn} from "../TableCoulmn";
 
 
 @Component({
@@ -20,12 +21,13 @@ export class POSComponent implements OnInit {
   total: number = 0;
   errorMessage: string = ''; // Variable to store error message
 
-  headArray = [
-    {'Head': 'Product Name', 'FieldName': 'name'},
-    {'Head': 'Price', 'FieldName': 'price'},
-    {'Head': 'Quantity', 'FieldName': 'qty'},
-    {'Head': 'Amount', 'FieldName': 'amount'},
-    {'Head': 'Action', 'FieldName': ''}
+  columns:TableColumn[]=[
+    {'caption': 'Product Name', 'field': 'name'},
+    {'caption': 'Price', 'field': 'price'},
+    {'caption': 'Quantity', 'field': 'qty'},
+    {'caption': 'Amount', 'field': 'amount'},
+    {'caption': 'Action', 'field': 'delete'}
+
   ];
   cartItems: Cart[] = [];
   onDelete: EventEmitter<{ index: number }> = new EventEmitter<{ index: number }>();
@@ -120,6 +122,7 @@ export class POSComponent implements OnInit {
               this.calculateTotal();
               this.cart = new Cart();
             }
+            console.log(this.cartItems);
           }
         }
         this.product.qty = '';
