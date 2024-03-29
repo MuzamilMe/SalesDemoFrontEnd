@@ -52,18 +52,6 @@ export class DatewiseSalesComponent implements OnInit {
 
 
   }
-
-  // formatDate(date: Date): string {
-  //   const year: number = date.getFullYear();
-  //   const month: number = date.getMonth() + 1; // Adding 1 because getMonth returns zero-based month
-  //   const day: number = date.getDate();
-  //
-  //   // Ensure leading zeros for month and day if necessary
-  //   const formattedMonth: string = month < 10 ? `0${month}` : `${month}`;
-  //   const formattedDay: string = day < 10 ? `0${day}` : `${day}`;
-  //
-  //   return `${year}-${formattedMonth}-${formattedDay}`;
-  // }
   formatDate(date: Date) {
     const currentDate = this.selectedDate;
     const year = currentDate.getFullYear(); // Get the year component
