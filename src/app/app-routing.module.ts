@@ -5,12 +5,13 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { POSComponent } from './pos/pos.component';
 import { SalesReportComponent } from './sales-report/sales-report.component';
+import {DatewiseSalesComponent} from "./datewise-sales/datewise-sales.component";
 const routes: Routes = [
   {
     path:'listProducts', component:ProductListComponent
   },
   {
-    path:'addProduct', component:AddProductComponent 
+    path:'addProduct', component:AddProductComponent
   },
   {
     path:'update-product/:id', component:UpdateProductComponent
@@ -23,6 +24,9 @@ const routes: Routes = [
     path:'pos',component:POSComponent
   },
   {
+    path:'dws', component:DatewiseSalesComponent
+  },
+  {
     path:'SalesReport',component:SalesReportComponent
   }
 ]
@@ -32,5 +36,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
- 
+
  }

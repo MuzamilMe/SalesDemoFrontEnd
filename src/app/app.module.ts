@@ -7,7 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -21,7 +21,14 @@ import { SalesReportComponent } from './sales-report/sales-report.component';
 import {MyTableComponent} from "./my-table/my-table.component";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { DatewiseSalesComponent } from './datewise-sales/datewise-sales.component';
+import { MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+
+
+
 @NgModule({
+
   declarations: [
     AppComponent,
     NavBarComponent,
@@ -31,16 +38,24 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     POSComponent,
     MyTableComponent,
     SalesReportComponent,
+    DatewiseSalesComponent,
+
   ],
+
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    MatFormFieldModule, MatInputModule, MatIconModule,
+    FormsModule, MatNativeDateModule, MatDatepickerModule,
     BrowserAnimationsModule, MatTableModule,
-    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule
+    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
+

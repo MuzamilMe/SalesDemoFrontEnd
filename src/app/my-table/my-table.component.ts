@@ -1,41 +1,3 @@
-// import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { ProductService } from '../product.service';
-//
-// @Component({
-//   selector: 'app-my-table',
-//   templateUrl: './my-table.component.html',
-//   styleUrls: ['./my-table.component.css']
-// })
-// export class MyTableComponent implements OnInit {
-//
-// @Input() HeadArray:{Head:string,FieldName:string}[]=[];
-// @Input() gridArray:any[]=[];
-// @Input() isAction:boolean=false;
-// @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
-// @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
-// @Output() search: EventEmitter<any> = new EventEmitter<any>();
-//
-//   searchQuery: string = '';
-//
-// constructor(private productService:ProductService){}
-// ngOnInit(): void {
-//
-// }
-// edit(item:any){
-// this.onEdit.emit(item);
-// }
-// delete(item:any){
-// this.onDelete.emit(item);
-// }
-// }
-/**
- * @Author azhar.hussain
- *
- * TableComponent is a reusable Angular component for displaying data in a Material Design table.
- * It includes sorting and filtering features.
- */
-
-
 import {
   AfterViewInit,
   Component,
@@ -59,7 +21,7 @@ import {TableColumn } from 'src/app/TableCoulmn';
   templateUrl: './my-table.component.html',
   styleUrls: ['./my-table.component.css']
 })
-  export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
+export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
 
   // Input property to pass the data to be displayed in the table
   @Input() tableData: any;

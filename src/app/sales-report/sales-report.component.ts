@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ProductService } from '../product.service';
 import { Sale } from '../Sale';
-import { Product } from '../product';
 import { TableColumn } from "../TableCoulmn";
 
 @Component({
@@ -22,10 +21,10 @@ export class SalesReportComponent implements OnInit {
   sales: Sale[] = [];
   sal:Sale=new Sale();
 
-  constructor(private service: ProductService) { }
+  constructor(private service: ProductService) {
 
-  ngOnInit() {
-    // Load sales data
+  }
+  ngOnInit(): void {
     this.loadData();
   }
 
@@ -40,16 +39,6 @@ export class SalesReportComponent implements OnInit {
           this.sal.totalAmount=sale.totalAmount;
           this.sales.push(this.sal);
           this.sal=new Sale();
-
-
-          // console.log(sales);
-          // const productInfo = {
-          //   sales:product.name,
-          //   price: product.price,
-          //   date:sale.date,
-          //   qty: sale.qty as number, // Assuming qty is a number
-          //   totalAmount: sale.totalAmount as number // Assuming totalAmount is a number
-          // };
         });
       });
     });

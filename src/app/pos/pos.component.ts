@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {Cart} from '../Cart';
@@ -21,7 +21,7 @@ export class POSComponent implements OnInit {
   total: number = 0;
   errorMessage: string = ''; // Variable to store error message
 
-  columns:TableColumn[]=[
+  columns: TableColumn[] = [
     {'caption': 'Product Name', 'field': 'name'},
     {'caption': 'Price', 'field': 'price'},
     {'caption': 'Quantity', 'field': 'qty'},
@@ -40,6 +40,7 @@ export class POSComponent implements OnInit {
   ngOnInit() {
     //it loads your first dropdown data
     this.loadData();
+
   }
 
   loadData() {
@@ -87,7 +88,6 @@ export class POSComponent implements OnInit {
   onCategoryChange() {
     this.selectedCategoryProducts = [];
   }
-
   addProduct() {
     if (this.selectedCategory === '') {
       this.errorMessage = 'Select Category First';
@@ -100,7 +100,6 @@ export class POSComponent implements OnInit {
     if (!this.product.qty) {
       this.errorMessage = 'Please Enter Quantity';
       return;
-
     } else {
       let existingCartItemIndex = this.cartItems.findIndex(item => item.name === this.selectedProduct);
 
@@ -119,10 +118,12 @@ export class POSComponent implements OnInit {
               this.cart.price = Number(pro.price);
               this.cart.amount = Number(pro.price) * Number(this.product.qty);
               this.cartItems.push(this.cart);
-              this.calculateTotal();
+
+              console.log(this.cartItems);
+
+              this.calculateTotal(); // Recalculate total here
               this.cart = new Cart();
             }
-            console.log(this.cartItems);
           }
         }
         this.product.qty = '';

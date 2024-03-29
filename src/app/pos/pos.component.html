@@ -1,39 +1,39 @@
-<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-<div class="row mt-4">
-  <div class="col-2" style="margin-left: 18%;">
-    <label for="" class="label">Select Category</label>
-    <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
-            (change)="checkFirstDropdown(selectedCategory)">
-      <option value="">Select</option>
-      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-    </select>
-  </div>
-  <div class="col-2">
-    <label for="" class="label">Select Product</label>
-    <select class="form-control" [(ngModel)]="selectedProduct">
-      <option value="">Select</option>
-      <option *ngFor="let product of selectedCategoryProducts" [value]="product">{{product}}</option>
-    </select>
-  </div>
-  <input type="number" [(ngModel)]="product.qty" [value]="product.qty" placeholder="Enter Quantity"
-         style="width: 8pc;height: fit-content;margin-top: 32px;">
-  <button class="Addbtn" (click)="addProduct()">Add</button>
+<form #productForm="ngForm" (ngSubmit)="addProduct()">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-</div>
+  <div class="row mt-4">
+    <div class="col-2" style="margin-left: 18%;">
+      <label class="label">Select Category</label>
+      <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
+              (change)="checkFirstDropdown(selectedCategory)" name="selectedCategory">
+        <option value="">Select</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label class="label">Select Product</label>
+      <select class="form-control" [(ngModel)]="selectedProduct" name="selectedProduct">
+        <option value="">Select</option>
+        <option *ngFor="let product of selectedCategoryProducts" [value]="product">{{ product }}</option>
+      </select>
+    </div>
+    <input type="number" class="form-control" [(ngModel)]="product.qty" name="quantity"
+           placeholder="Enter Quantity" style="width: 8pc;height: fit-content;margin-top: 32px;">
+
+    <button type="submit" class="Addbtn">Add</button>
+  </div>
+</form>
 
 <div class="row mt-4" style="margin-left: 30%;">
-  <app-table (clickOnDelete)="deleteRow($event)"
-             [columns]="columns"
-             [tableData]="cartItems"
-             [deleteButtonEnabled]="true"
-
-  >
+  <app-table
+    [columns]="columns"
+    [tableData]="cartItems"
+    [deleteButtonEnabled]="true">
   </app-table>
-
 </div>
+
 <div class="row1">
   <tr>
-    <td>Total:{{total}}</td>
-
+    <td>Total:{{ total }}</td>
   </tr>
 </div>

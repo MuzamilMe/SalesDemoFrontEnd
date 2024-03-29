@@ -23,6 +23,7 @@
           </button>
           <button [disabled]="!deleteButtonEnabled" [ngStyle]="{'border':'none'}" *ngIf="c.field.includes('delete')"
                   class="btn btn-sm">
+            <!--img disabled-->
             <!--            <img-->
             <!--            src=""-->
             <!--            alt="delete button"-->
@@ -34,12 +35,13 @@
           <!--          <button class="btn btn-sm"><img src="../../../assets/icons/eye.svg" (click)="clickOnView.emit(element)"-->
           <!--                                          alt="cross icon"></button>-->
           <button class="btn btn-sm">
-            <mat-icon>edit</mat-icon>
+            <i class="material-icons" style="margin-left: -15px" (click)="clickOnEdit.emit(element)" >edit</i>
 
-            <img src="../../../assets/edit.png" alt="edit button"
-                 (click)="clickOnEdit.emit(element)"></button>
-          <button class="btn btn-sm"><img src="../../../assets/delete.png" alt="delete button"
-                                          (click)="clickOnDelete.emit(element)"></button>
+
+          </button>
+          <button class="btn btn-sm">
+            <i class="material-icons" (click)="clickOnDelete.emit(element)">delete</i>
+          </button>
         </div>
       </ng-container>
       <!-- <ng-container *ngIf="c.isClickable" class="bg-white">
