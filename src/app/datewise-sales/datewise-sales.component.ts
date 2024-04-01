@@ -21,7 +21,9 @@ export class DatewiseSalesComponent implements OnInit {
     {'caption': 'Price', 'field': 'price'},
     {'caption': 'Quantity', 'field': 'qty',},
     {'caption': 'Amount', 'field': 'totalAmount'},
-    {'caption': 'Date', 'field': 'date'}
+    {'caption': 'Date', 'field': 'date'},
+    {'caption': 'Customer Name', 'field': 'cname'},
+    {'caption': 'Payment Type', 'field': 'payType'}
   ];
 
   sales: Sale[] = [];
@@ -83,6 +85,8 @@ export class DatewiseSalesComponent implements OnInit {
             newSale.qty = sale.qty;
             newSale.date = sale.date;
             newSale.totalAmount = sale.totalAmount;
+            newSale.cname= sale.cname;
+            newSale.payType= sale.payType;
             this.sales.push(newSale);
             salesFound = true; // Set flag to true if sales are found
           }
