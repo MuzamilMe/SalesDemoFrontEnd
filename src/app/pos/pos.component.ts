@@ -19,6 +19,8 @@ export class POSComponent implements OnInit {
   selectedCategoryProducts: any[] = [];
   selectedProduct: string = '';
   total: number = 0;
+  cName:string='';
+  pType:string='';
   errorMessage: string = ''; // Variable to store error message
 
   columns: TableColumn[] = [
@@ -26,7 +28,8 @@ export class POSComponent implements OnInit {
     {'caption': 'Price', 'field': 'price'},
     {'caption': 'Quantity', 'field': 'qty'},
     {'caption': 'Amount', 'field': 'amount'},
-    {'caption': 'Action', 'field': 'delete'}
+    {'caption': 'Action', 'field': 'delete'},
+
 
   ];
   cartItems: Cart[] = [];
@@ -147,6 +150,9 @@ export class POSComponent implements OnInit {
     // console.log(this.total+'sum');
     // Assign the totalSum to a variable accessible in the component
     this.total = sum;
+  }
+  checkOut(){
+
   }
 }
 

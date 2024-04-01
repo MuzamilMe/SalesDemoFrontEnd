@@ -12,13 +12,13 @@
     height:max-content;
     font-size: larger;
     color: rgb(237, 247, 243);
-    height: max-content;
     padding: 10px;
     transition: background-color 0.3s ease;
 
 }
 .row{
     margin-left: 10%;
+  margin-bottom: 2%;
 }
 .row1:hover {
     background-color: #57622d; /* Lighter background color on hover */
@@ -29,10 +29,10 @@
 
 }
 .Addbtn{
-    width: 3pc;
+    width: 6pc;
     height: fit-content;
     margin-top: 32px;
-    margin-left: 2px;
+    margin-left: 1pc;
     text-align: center;
     background-color: darkolivegreen;
     color: aliceblue;
@@ -45,4 +45,14 @@
 }
 .label{
     color: #042883;
+}
+.Checkout{
+  width: 6pc;
+  height: fit-content;
+  margin-top: 32px;
+  margin-left: 45%;
+  text-align: center;
+  background-color: #042883;
+  color: aliceblue;
+  font-weight: 400;
 }

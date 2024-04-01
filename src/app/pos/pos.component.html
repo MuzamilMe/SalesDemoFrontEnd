@@ -18,7 +18,7 @@
       </select>
     </div>
     <input type="number" class="form-control" [(ngModel)]="product.qty" name="quantity"
-           placeholder="Enter Quantity" style="width: 8pc;height: fit-content;margin-top: 32px;">
+           placeholder="Enter Quantity" style="width: 9pc;height: fit-content;margin-top: 26px;">
 
     <button type="submit" class="Addbtn">Add</button>
   </div>
@@ -32,8 +32,27 @@
   </app-table>
 </div>
 
+<div class="row mt-4">
+  <div class="col-2" style="margin-left: 18%;">
+    <label class="label">Select Category</label>
+
+    <select class="form-control" [(ngModel)]="pType" name="paymentType" required>
+      <option value="">Select</option>
+      <option value="">Cash</option>
+      <option value="">E-Pay</option>
+      <option value="">Debt</option>
+    </select>
+
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="cName" name="customerName"
+         placeholder="Customer Name" style="width: 9pc;height: fit-content;margin-top: 1.6pc;" required>
+
+</div>
+
 <div class="row1">
   <tr>
     <td>Total:{{ total }}</td>
   </tr>
 </div>
+<button type="submit" class="Checkout" (submit)="checkOut()">CheckOut</button>
+
