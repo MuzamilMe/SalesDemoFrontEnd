@@ -54,7 +54,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   // Lifecycle hook: ngOnInit
   ngOnInit(): void {
     // Map the column definitions to column names for display
-    //  this.displayedColumns = this.columns.map((tableColumn: TableColumn) => tableColumn.caption);
+     this.displayedColumns = this.columns.map((tableColumn: TableColumn) => tableColumn.caption);
     this.displayedColumns = this.columns ? this.columns.map((tableColumn: TableColumn) => tableColumn.caption) : [];
 
   }
@@ -62,6 +62,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   // Lifecycle hook: ngOnChanges
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tableData'] && changes['tableData'].currentValue) {
+        this.setDataSource(changes['tableData'].currentValue);
       // Update the data source when the input data changes
       setTimeout(() => {
         this.setDataSource(changes['tableData'].currentValue);
@@ -77,7 +78,6 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   loading = false;
 
   // setDataSource(data: any[] | any) {
-
   //   this._dataSource = new MatTableDataSource<any>(data);
   //   if (Array.isArray(data)) {
   //      (!this.pagination && this.customPaginator)?
@@ -110,7 +110,6 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   //     }
 
   //     this._dataSource = new MatTableDataSource<any>(data);
-
   //     if (Array.isArray(data)) {
   //       if (!this.pagination && this.customPaginator) {
   //         this._dataSource.paginator = this.customPaginator;

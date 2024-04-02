@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {Cart} from '../Cart';
@@ -19,8 +19,8 @@ export class POSComponent implements OnInit {
   selectedCategoryProducts: any[] = [];
   selectedProduct: string = '';
   total: number = 0;
-  cName:string='';
-  pType:string='';
+  cName: string = '';
+  pType: string = '';
   errorMessage: string = ''; // Variable to store error message
 
   columns: TableColumn[] = [
@@ -121,7 +121,8 @@ export class POSComponent implements OnInit {
               this.cart.price = Number(pro.price);
               this.cart.amount = Number(pro.price) * Number(this.product.qty);
               this.cartItems.push(this.cart);
-
+              //used for table auto refresh
+              this.cartItems = [...this.cartItems];
               console.log(this.cartItems);
 
               this.calculateTotal(); // Recalculate total here
@@ -140,6 +141,9 @@ export class POSComponent implements OnInit {
     this.cartItems.splice(index, 1);
     this.onDelete.emit({index});
     this.calculateTotal();
+    //used for table auto refresh
+    this.cartItems = [...this.cartItems];
+
   }
 
   calculateTotal() {
@@ -147,11 +151,11 @@ export class POSComponent implements OnInit {
     for (let item of this.cartItems) {
       sum += item.amount;
     }
-    // console.log(this.total+'sum');
-    // Assign the totalSum to a variable accessible in the component
+
     this.total = sum;
   }
-  checkOut(){
+
+  checkOut() {
 
   }
 }
