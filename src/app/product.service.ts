@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from './product';
 import { ReturnStatement } from '@angular/compiler';
 import { SalesReportComponent } from './sales-report/sales-report.component';
+import {Cart} from "./Cart";
 
 
 @Injectable({
@@ -16,9 +17,9 @@ export class ProductService {
   private updateURl="http://localhost:9191/products/update"
   private getbyIdURL="http://localhost:9191/products/getById"
   private getByNameURL="http://localhost:9191/products/getByName"
-  private getCategories="http://localhost:9191/products/getCategoriesOnly"
   private getByCategory="http://localhost:9191/products/productByCategory"
   private getSales="http://localhost:9191/sale/Sales"
+  private transaction="http://localhost:9191/sale/transaction"
 
   constructor(private httpClient:HttpClient) { }
   public getListProducts(): Observable<Product[]>{
@@ -51,14 +52,26 @@ export class ProductService {
  getByName(name:string):Observable<Product>{
     return this.httpClient.get<Product>( `${this.getByNameURL}/${name}`)
   }
-  getCategoriesOnly(){
-    return this.httpClient.get<string>(`${this.getCategories}`)
-  }
+
   getProductByCategory(category:string){
     return this.httpClient.get<Product>( `${this.getByCategory}/${category}`)
 
   }
   getSalesReport(){
     return this.httpClient.get(`${this.getSales}`)
+  }
+  transactions(cart:Cart[],cName:string,payType:string):Observable<any>{
+    let form = new FormData();
+    for (let cr of cart) {
+      form.append("SaleDTOS[0].productDTOS[0].name", cr.name);
+      form.append("SaleDTOS[0].price", cr.price.toString());
+      form.append("SaleDTOS[0].qty", cr.qty.toString());
+      form.append("SaleDTOS[0].amount", cr.amount.toString());
+      form.append("SaleDTOS[0].cName", cName);
+      form.append("SaleDTOS[0].payType", payType);
+
+    }
+    return this.httpClient.post(`${this.transaction}`,form)
+
   }
 }

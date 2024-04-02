@@ -3,6 +3,7 @@ import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {Cart} from '../Cart';
 import {TableColumn} from "../TableCoulmn";
+import {parseTemplate} from "@angular/compiler";
 
 
 @Component({
@@ -155,8 +156,26 @@ export class POSComponent implements OnInit {
     this.total = sum;
   }
 
-  checkOut() {
+  checkOut(cart:Cart[]) {
+    // if(this.cartItems==null){
+    //   this.errorMessage='Select Products First!'
+    // }
+    if(this.cName==''){
+      this.errorMessage='Enter Customer Name!'
+    }
+    if(this.pType==''){
+      this.errorMessage='Select Payment Type!'
+    }
+    // console.log('check'+this.pType)
+   this.productService.transactions(cart,this.cName,this.pType).subscribe(()=>{
 
+   },error => console.log(error));
+
+    this.cName='';
+    this.pType='';
+    this.errorMessage='';
+    this.cartItems=[];
+    this.total=0;
   }
 }
 

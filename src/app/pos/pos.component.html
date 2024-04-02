@@ -36,11 +36,11 @@
   <div class="col-2" style="margin-left: 18%;">
     <label class="label">Select Payment Type</label>
 
-    <select class="form-control" [(ngModel)]="pType" name="paymentType" required>
+    <select class="form-control" [(ngModel)]="pType" name="paymentType">
       <option value="">Select</option>
-      <option value="">Cash</option>
-      <option value="">E-Pay</option>
-      <option value="">Debt</option>
+      <option value="Cash">Cash</option>
+      <option value="E-Pay">E-Pay</option>
+      <option value="Debt">Debt</option>
     </select>
 
   </div>
@@ -54,5 +54,6 @@
     <td>Total:{{ total }}</td>
   </tr>
 </div>
-<button type="submit" class="Checkout" (submit)="checkOut()">CheckOut</button>
+<!--<button (click)="checkOut($event)"></button>-->
+<button type="button" class="Checkout" (click)="checkOut(cartItems)">CheckOut</button>
 
