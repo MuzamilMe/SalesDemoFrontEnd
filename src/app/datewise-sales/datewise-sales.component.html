@@ -3,8 +3,8 @@
 
 <mat-form-field appearance="outline" class="mat-form-field">
 
-  <input matInput formControlName="releasedAt" placeholder="Pick a date"
-         [matDatepicker]="releasedAtPicker" (dateChange)="dateChanged($event)">
+  <input matInput [min]="" [max]="maxDate" formControlName="releasedAt" placeholder="Pick a date"
+         [matDatepicker]="releasedAtPicker" (dateChange)="dateChanged($event) ">
 
   <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
 

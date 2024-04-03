@@ -15,6 +15,7 @@ export class DatewiseSalesComponent implements OnInit {
     selectedDate: [null]
   });
   selectedDate = new Date();
+  maxDate = new Date();
 
   columns: TableColumn[] = [
     {'caption': 'Product Name', 'field': 'productName'},
