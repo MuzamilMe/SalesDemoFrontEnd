@@ -13,7 +13,7 @@ import {
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {TableColumn } from 'src/app/TableCoulmn';
+import {TableColumn} from 'src/app/TableCoulmn';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   @Input() tableData: any;
   @Input() pagination = true;
   //**if don`t want to you default paginator then can input custom**//
-  @Input() customPaginator!:MatPaginator;
+  @Input() customPaginator!: MatPaginator;
   // Data source for the Material table
   _dataSource = new MatTableDataSource<any>();
 
@@ -47,6 +47,10 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   @Input() viewButtonEnabled: boolean = true;
   @Input() updateButtonEnabled: boolean = false;
   @Input() deleteButtonEnabled: boolean = false;
+  // Input property to define the table columns
+  @Input() columns: TableColumn[] = [];
+  // Set the data source for the table
+  loading = false;
 
   constructor() {
   }
@@ -54,7 +58,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   // Lifecycle hook: ngOnInit
   ngOnInit(): void {
     // Map the column definitions to column names for display
-     this.displayedColumns = this.columns.map((tableColumn: TableColumn) => tableColumn.caption);
+    this.displayedColumns = this.columns.map((tableColumn: TableColumn) => tableColumn.caption);
     this.displayedColumns = this.columns ? this.columns.map((tableColumn: TableColumn) => tableColumn.caption) : [];
 
   }
@@ -62,7 +66,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   // Lifecycle hook: ngOnChanges
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tableData'] && changes['tableData'].currentValue) {
-        this.setDataSource(changes['tableData'].currentValue);
+      this.setDataSource(changes['tableData'].currentValue);
       // Update the data source when the input data changes
       setTimeout(() => {
         this.setDataSource(changes['tableData'].currentValue);
@@ -70,12 +74,6 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
 
     }
   }
-
-  // Input property to define the table columns
-  @Input() columns: TableColumn[] = [];
-
-  // Set the data source for the table
-  loading = false;
 
   // setDataSource(data: any[] | any) {
   //   this._dataSource = new MatTableDataSource<any>(data);
@@ -87,6 +85,7 @@ export class MyTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
   //   setTimeout(() => {
   //     this.loading = false;
   //   }, 1000);
+
   // }
   setDataSource(data: any[] | any) {
     this._dataSource = new MatTableDataSource<any>(data);

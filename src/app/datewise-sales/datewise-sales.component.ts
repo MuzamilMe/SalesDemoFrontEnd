@@ -50,11 +50,12 @@ export class DatewiseSalesComponent implements OnInit {
   dateChanged($event: any) {
     this.selectedDate = $event.target.value;
     this.formatDate(this.selectedDate);
-    this.sales=[];
+    this.sales = [];
     this.loadData();
 
 
   }
+
   formatDate(date: Date) {
     const currentDate = this.selectedDate;
     const year = currentDate.getFullYear(); // Get the year component
@@ -70,6 +71,7 @@ export class DatewiseSalesComponent implements OnInit {
     this.date = `${year}-${month}-${day}`
 
   }
+
   loadData(): void {
     this.errorMessage = ''; // Reset error message before loading data
 
@@ -86,8 +88,8 @@ export class DatewiseSalesComponent implements OnInit {
             newSale.qty = sale.qty;
             newSale.date = sale.date;
             newSale.totalAmount = sale.totalAmount;
-            newSale.cname= sale.cname;
-            newSale.payType= sale.payType;
+            newSale.cname = sale.cname;
+            newSale.payType = sale.payType;
             this.sales.push(newSale);
             salesFound = true; // Set flag to true if sales are found
           }
@@ -102,5 +104,5 @@ export class DatewiseSalesComponent implements OnInit {
     });
   }
 
-  }
+}
 

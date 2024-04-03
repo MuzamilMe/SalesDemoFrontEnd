@@ -6,8 +6,8 @@ export class Sale {
   qty: number;
   productName: string;
   price: number;
-  cname:string;
-  payType:string;
+  cname: string;
+  payType: string;
   products: Product [];
 
   constructor() {
@@ -16,8 +16,8 @@ export class Sale {
     this.totalAmount = 0;
     this.date = "";
     this.qty = 0;
-    this.cname="";
-    this.payType="";
+    this.cname = "";
+    this.payType = "";
     this.products = [];
   }
 

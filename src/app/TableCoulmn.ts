@@ -1,7 +1,7 @@
 export interface TableColumn {
-  caption:string;
-  field:string;
+  caption: string;
+  field: string;
   isClickable?: boolean;
-  imageSrc?:string;
-  label?:string;
+  imageSrc?: string;
+  label?: string;
 }

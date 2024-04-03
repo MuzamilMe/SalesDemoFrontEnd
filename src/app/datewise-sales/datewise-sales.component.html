@@ -3,10 +3,10 @@
 
 <mat-form-field appearance="outline" class="mat-form-field">
 
-  <input matInput [min]="" [max]="maxDate" formControlName="releasedAt" placeholder="Pick a date"
-         [matDatepicker]="releasedAtPicker" (dateChange)="dateChanged($event) ">
+  <input (dateChange)="dateChanged($event) " [matDatepicker]="releasedAtPicker" [max]="maxDate" [min]="" formControlName="releasedAt"
+         matInput placeholder="Pick a date">
 
-  <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+  <mat-datepicker-toggle [for]="releasedAtPicker" matSuffix>
 
   </mat-datepicker-toggle>
 
@@ -16,4 +16,4 @@
 
 </mat-form-field>
 
-<app-table [columns]="columns" [tableData]="sales" ></app-table>
+<app-table [columns]="columns" [tableData]="sales"></app-table>

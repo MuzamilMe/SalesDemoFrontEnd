@@ -4,31 +4,31 @@
   <div class="row mt-4">
     <div class="col-2" style="margin-left: 18%;">
       <label class="label">Select Category</label>
-      <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
-              (change)="checkFirstDropdown(selectedCategory)" name="selectedCategory">
+      <select (change)="onCategoryChange()" (change)="checkFirstDropdown(selectedCategory)" [(ngModel)]="selectedCategory"
+              class="form-control" name="selectedCategory">
         <option value="">Select</option>
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
     </div>
     <div class="col-2">
       <label class="label">Select Product</label>
-      <select class="form-control" [(ngModel)]="selectedProduct" name="selectedProduct">
+      <select [(ngModel)]="selectedProduct" class="form-control" name="selectedProduct">
         <option value="">Select</option>
         <option *ngFor="let product of selectedCategoryProducts" [value]="product">{{ product }}</option>
       </select>
     </div>
-    <input type="number" class="form-control" [(ngModel)]="product.qty" name="quantity"
-           placeholder="Enter Quantity" style="width: 9pc;height: fit-content;margin-top: 26px;">
+    <input [(ngModel)]="product.qty" class="form-control" name="quantity" placeholder="Enter Quantity"
+           style="width: 9pc;height: fit-content;margin-top: 26px;" type="number">
 
-    <button type="submit" class="Addbtn">Add</button>
+    <button class="Addbtn" type="submit">Add</button>
   </div>
 </form>
 
 <div class="row mt-4" style="margin-left: 30%;">
   <app-table
+    (clickOnDelete)="deleteRow($event)"
     [columns]="columns"
-    [tableData]="cartItems"
-    [deleteButtonEnabled]="true" (clickOnDelete)="deleteRow($event)">
+    [deleteButtonEnabled]="true" [tableData]="cartItems">
   </app-table>
 </div>
 
@@ -36,7 +36,7 @@
   <div class="col-2" style="margin-left: 18%;">
     <label class="label">Select Payment Type</label>
 
-    <select class="form-control" [(ngModel)]="pType" name="paymentType">
+    <select [(ngModel)]="pType" class="form-control" name="paymentType">
       <option value="">Select</option>
       <option value="Cash">Cash</option>
       <option value="E-Pay">E-Pay</option>
@@ -44,8 +44,8 @@
     </select>
 
   </div>
-  <input type="text" class="form-control" [(ngModel)]="cName" name="customerName"
-         placeholder="Customer Name" style="width: 9pc;height: fit-content;margin-top: 1.6pc;" required>
+  <input [(ngModel)]="cName" class="form-control" name="customerName" placeholder="Customer Name"
+         required style="width: 9pc;height: fit-content;margin-top: 1.6pc;" type="text">
 
 </div>
 
@@ -55,5 +55,5 @@
   </tr>
 </div>
 <!--<button (click)="checkOut($event)"></button>-->
-<button type="button" class="Checkout" (click)="checkOut(cartItems)">CheckOut</button>
+<button (click)="checkOut(cartItems)" class="Checkout" type="button">CheckOut</button>
 

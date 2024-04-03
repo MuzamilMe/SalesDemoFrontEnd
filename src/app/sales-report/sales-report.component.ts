@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { ProductService } from '../product.service';
-import { Sale } from '../Sale';
-import { TableColumn } from "../TableCoulmn";
+import {ProductService} from '../product.service';
+import {Sale} from '../Sale';
+import {TableColumn} from "../TableCoulmn";
 
 @Component({
   selector: 'app-sales-report',
@@ -68,8 +68,8 @@ export class SalesReportComponent implements OnInit {
             newSale.qty = sale.qty;
             newSale.date = sale.date;
             newSale.totalAmount = sale.totalAmount;
-            newSale.cname=sale.cname;
-            newSale.payType=sale.payType;
+            newSale.cname = sale.cname;
+            newSale.payType = sale.payType;
             this.sales.push(newSale);
             salesFound = true; // Set flag to true if sales are found
           }

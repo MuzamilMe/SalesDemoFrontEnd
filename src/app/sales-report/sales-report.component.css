@@ -1,8 +1,9 @@
-h1{
-    padding-top: 1%;
-text-align: center;
-color: #465b23;
+h1 {
+  padding-top: 1%;
+  text-align: center;
+  color: #465b23;
 }
-h1:hover{
-opacity: 60%;
+
+h1:hover {
+  opacity: 60%;
 }

@@ -4,9 +4,9 @@ html {
 }
 
 body {
-  margin:0;
-  padding:0;
-  color:#f8fbff;
+  margin: 0;
+  padding: 0;
+  color: #f8fbff;
   font-family: sans-serif;
   /*background: linear-gradient(#031b46, #057dff);*/
 }
@@ -19,7 +19,7 @@ body {
   width: 30rem;
   background: rgb(13, 13, 99);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   border-radius: 10px;
   padding: 40px;
 }
@@ -35,7 +35,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.form-group label  {
+.form-group label {
   color: #ffffff;
 }
 
@@ -85,6 +85,7 @@ body {
   0 0 50px #03e9f4,
   0 0 100px #03e9f4;
 }
+
 .form-control option {
   color: black; /* Change the color to black or any other color that contrasts with the background */
 }

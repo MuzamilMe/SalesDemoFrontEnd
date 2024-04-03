@@ -1,38 +1,42 @@
 <script src="../app.module.ts"></script>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #a7d5f7;">
   <div class="container-fluid" style="margin-bottom: auto">
-  <a class="navbar-brand" href="#">Products</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a routerLink="listProducts" routerLinkActive="active" class="nav-link"><i class="bi bi-house"></i></a><span></span>
-      </li>
-      <li class="nav-item ">
-        <a routerLink="addProduct" routerLinkActive="active" class="nav-link"><i class="bi bi-plus-square-fill"></i></a>
-      </li>
+    <a class="navbar-brand" href="#">Products</a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="listProducts" routerLinkActive="active"><i
+            class="bi bi-house"></i></a><span></span>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="addProduct" routerLinkActive="active"><i
+            class="bi bi-plus-square-fill"></i></a>
+        </li>
 
-      <li class="nav-item dropdown">
-        <a class="btn btn-md dropdown-toggle" style="text-align: justify" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
-                      Sales
-                    </a>
-            <div class="dropdown show">
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li class="nav-item dropdown">
+          <a class="btn btn-md dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLink" role="button"
+             style="text-align: justify">
+            Sales
+          </a>
+          <div class="dropdown show">
+            <div aria-labelledby="dropdownMenuLink" class="dropdown-menu">
 
-            <a class="dropdown-item" routerLink="pos" routerLinkActive="active">Point Of Sales</a>
-            <a class="dropdown-item" routerLink="SalesReport">Today's Sale</a>
-            <a class="dropdown-item" routerLink="dws">Date Wise Sales</a>
+              <a class="dropdown-item" routerLink="pos" routerLinkActive="active">Point Of Sales</a>
+              <a class="dropdown-item" routerLink="SalesReport">Today's Sale</a>
+              <a class="dropdown-item" routerLink="dws">Date Wise Sales</a>
+            </div>
           </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a routerLink="lowlevelstock" routerLinkActive="active" class="nav-link" style="font-size: small">low-level-stock</a><span></span>
-      </li>
-    </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="lowlevelstock" routerLinkActive="active" style="font-size: small">low-level-stock</a><span></span>
+        </li>
+      </ul>
 
-  </div>
+    </div>
   </div>
 </nav>
 

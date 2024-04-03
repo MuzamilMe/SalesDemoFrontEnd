@@ -1,11 +1,13 @@
-.mat-form-field{
+.mat-form-field {
   margin: 0.5%;
 }
-.error-message{
+
+.error-message {
   margin: 0.5%;
 
   margin-left: 3%;
 }
+
 /* Style the mat-form-field */
 .mat-form-field {
   width: 30%;

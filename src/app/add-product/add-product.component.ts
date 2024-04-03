@@ -20,6 +20,7 @@ export class AddProductComponent {
   ngOnInit(): void {
     this.loadData();
   }
+
   loadData() {
     this.productService.getListProducts().subscribe((products: any) => {
       for (let pro of products.data) {
@@ -30,6 +31,7 @@ export class AddProductComponent {
 
     })
   }
+
   onSubmit() {
     if (this.product.name == "" || this.product.price == "" || this.product.qty == "") {
       this.err = true;

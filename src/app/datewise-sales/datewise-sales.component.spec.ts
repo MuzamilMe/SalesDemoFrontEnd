@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DatewiseSalesComponent } from './datewise-sales.component';
+import {DatewiseSalesComponent} from './datewise-sales.component';
 
 describe('DatewiseSalesComponent', () => {
   let component: DatewiseSalesComponent;
@@ -8,9 +8,9 @@ describe('DatewiseSalesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DatewiseSalesComponent ]
+      declarations: [DatewiseSalesComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DatewiseSalesComponent);
     component = fixture.componentInstance;

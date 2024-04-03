@@ -1,43 +1,43 @@
 <div class="card">
-<form (ngSubmit)="updateProduct(product)">
-  <div class="text-center">
-    <h2>Product Update</h2>
-  </div>
+  <form (ngSubmit)="updateProduct(product)">
+    <div class="text-center">
+      <h2>Product Update</h2>
+    </div>
     <div class="form-group">
       <div class="mb-1">
-      <label>Product id</label>
-        <input type="text" class="form-control" id="id"  [(ngModel)]="product.id" name="id" readonly>
+        <label>Product id</label>
+        <input [(ngModel)]="product.id" class="form-control" id="id" name="id" readonly type="text">
       </div>
-    <div class="mb-1">
-      <label>Product Name</label>
-      <input type="text" class="form-control" id="name"
-       [(ngModel)]="product.name" name="name">
-    </div>
-    <div class="mb-3">
-      <label>Quantity</label>
-      <input type="text" class="form-control" id="qty"
-       [(ngModel)]="product.qty" name="Quantity">
-    </div>
-    <div class="mb-3">
+      <div class="mb-1">
+        <label>Product Name</label>
+        <input [(ngModel)]="product.name" class="form-control" id="name"
+               name="name" type="text">
+      </div>
+      <div class="mb-3">
+        <label>Quantity</label>
+        <input [(ngModel)]="product.qty" class="form-control" id="qty"
+               name="Quantity" type="text">
+      </div>
+      <div class="mb-3">
         <label>Price</label>
-        <input type="text" class="form-control" id="Price"
-        [(ngModel)]="product.price" name="price">
+        <input [(ngModel)]="product.price" class="form-control" id="Price"
+               name="price" type="text">
       </div>
       <div>
         <label>Category</label>
 
-        <input matInput type="text" [(ngModel)]="product.category" name="category" hidden="true">
-        <select class="form-control" [(ngModel)]="product.category" name="category" style="margin-top: 16px">
+        <input [(ngModel)]="product.category" hidden="true" matInput name="category" type="text">
+        <select [(ngModel)]="product.category" class="form-control" name="category" style="margin-top: 16px">
           <option value="">Select</option>
           <option *ngFor="let category of categories" [value]="category">{{category}}</option>
         </select>
 
       </div>
 
-    <div class="text-center" >
-    <button type="submit"  class="btn-anim4" >Update</button>
-  </div>
+      <div class="text-center">
+        <button class="btn-anim4" type="submit">Update</button>
+      </div>
     </div>
-</form>
+  </form>
 </div>
 
