@@ -157,9 +157,9 @@ export class POSComponent implements OnInit {
   }
 
   checkOut(cart:Cart[]) {
-    // if(this.cartItems==null){
-    //   this.errorMessage='Select Products First!'
-    // }
+    if(this.cartItems==null){
+      this.errorMessage='Select Products First!'
+    }
     if(this.cName==''){
       this.errorMessage='Enter Customer Name!'
     }

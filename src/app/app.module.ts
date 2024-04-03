@@ -24,6 +24,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { DatewiseSalesComponent } from './datewise-sales/datewise-sales.component';
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { LessProductsComponent } from './less-products/less-products.component';
 
 
 
@@ -39,6 +40,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MyTableComponent,
     SalesReportComponent,
     DatewiseSalesComponent,
+    LessProductsComponent,
 
   ],
 

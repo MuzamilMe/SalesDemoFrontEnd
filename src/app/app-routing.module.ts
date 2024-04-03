@@ -6,6 +6,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { POSComponent } from './pos/pos.component';
 import { SalesReportComponent } from './sales-report/sales-report.component';
 import {DatewiseSalesComponent} from "./datewise-sales/datewise-sales.component";
+import {LessProductsComponent} from "./less-products/less-products.component";
 const routes: Routes = [
   {
     path:'listProducts', component:ProductListComponent
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path:'SalesReport',component:SalesReportComponent
+  },
+  {
+    path:'lowlevelstock',component:LessProductsComponent
   }
 ]
 
