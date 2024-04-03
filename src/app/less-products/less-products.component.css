@@ -1,9 +1,11 @@
-h1{
-margin-left: 230px;
+h1 {
+  margin-top: 10px;
+  margin-left: 230px;
   color: #042883;
 }
-.card{
+
+.card {
   margin-top: 20px;
   margin-left: 310px;
-  width:700px;
+  width: 700px;
 }
