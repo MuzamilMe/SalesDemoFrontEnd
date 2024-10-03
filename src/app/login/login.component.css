@@ -10,6 +10,7 @@
   border-radius: 10px;
   padding: 40px;
   align-items: center;
+
 }
 
 .card h1 {
@@ -19,14 +20,16 @@
 
 }
 .alert-container {
-  position: absolute;
-  top: 20px;
-  right: 500px;
-  z-index: 500;
+  position: fixed;
+  top: 10%;
+  left:35%;
+  z-index: 1000;
+  width: auto;
+  max-width: 400px;
 }
 .custom-alert {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   background-color:#ffcccb; /* Red background */
   color: #000000 ; /* White text */
   width: 400px;
