@@ -25,7 +25,8 @@ import {DatewiseSalesComponent} from './datewise-sales/datewise-sales.component'
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {LessProductsComponent} from './less-products/less-products.component';
-
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
 
@@ -40,8 +41,8 @@ import {LessProductsComponent} from './less-products/less-products.component';
     SalesReportComponent,
     DatewiseSalesComponent,
     LessProductsComponent,
-
-  ],
+    LoginComponent
+    ],
 
   imports: [
 
@@ -51,7 +52,7 @@ import {LessProductsComponent} from './less-products/less-products.component';
     MatFormFieldModule, MatInputModule, MatIconModule,
     FormsModule, MatNativeDateModule, MatDatepickerModule,
     BrowserAnimationsModule, MatTableModule,
-    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, ReactiveFormsModule
+    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, ReactiveFormsModule, MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
