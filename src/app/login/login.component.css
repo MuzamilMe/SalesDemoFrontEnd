@@ -1,6 +1,6 @@
 .card {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30rem;
@@ -18,20 +18,26 @@
   text-align: center;
 
 }
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.alert-container {
+  position: absolute;
+  top: 20px;
+  right: 500px;
+  z-index: 500;
+}
+.custom-alert {
+  text-align: center;
+  padding: 20px;
+  background-color:#ffcccb; /* Red background */
+  color: #000000 ; /* White text */
+  width: 400px;
+  height: 60px;
+  border: 2px solid #f44336; /* Red border */  /*box-shadow: 0 2px 8px rgb(40, 38, 38);*/
+  font-size: 16px;
+  position: relative;
+  animation: fadeIn 0.5s ease; /* Fade-in animation */
 }
 
-.closebtn:hover {
-  color: black;
-}
+
 
 .mb-3 {
   margin-bottom: 1rem;
