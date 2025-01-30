@@ -3,6 +3,8 @@ import {Product} from '../product';
 import {ProductService} from '../product.service';
 import {Router} from '@angular/router';
 import {TableColumn} from "../TableCoulmn";
+import {MatDialog} from "@angular/material/dialog";
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +24,7 @@ export class ProductListComponent {
   searchQuery: string = '';
   filteredProducts: any[] = [];
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router,private dialog:MatDialog) {
 
   }
 
@@ -79,11 +81,18 @@ export class ProductListComponent {
   }
 
   public delete(name: string) {
+const dialogRef = this.dialog.open(DialogBoxComponent,{
+  data:{message:"Are you sure?"},
+});
+dialogRef.afterClosed().subscribe((result=>{
+  if(result){
     this.productService.deleteProduct(name).subscribe(() => {
         this.getproducts();
-
       }, error => console.log(error)
     );
+  }
+}))
+
   }
 
   public getByName(search: any) {

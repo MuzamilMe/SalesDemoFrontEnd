@@ -1,7 +1,7 @@
 <!-- <div class="card" style="width: 50rem;margin-top: 2%;" > -->
 <input (input)="onSearch()" [(ngModel)]="searchQuery" class="search-bar" placeholder="Search..." style="width: 27rem;margin-top: 1%; margin-bottom: 0.5%"
        type="text">
-<app-table (clickOnDelete)="delete($event.name)"
+<app-table (clickOnDelete)="   delete($event.name)"
            (clickOnEdit)="update($event.id)"
            [columns]="columns"
            [deleteButtonEnabled]="true"

@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthGuard} from "./auth-guard/auth-guard.component";
 
 
+
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },  // Redirect to login by default

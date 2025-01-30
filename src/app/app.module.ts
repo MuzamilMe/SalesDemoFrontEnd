@@ -27,6 +27,9 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {LessProductsComponent} from './less-products/less-products.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
 
@@ -41,18 +44,19 @@ import {MatCardModule} from "@angular/material/card";
     SalesReportComponent,
     DatewiseSalesComponent,
     LessProductsComponent,
-    LoginComponent
+    LoginComponent,
+    DialogBoxComponent
     ],
 
   imports: [
 
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,MatProgressSpinnerModule,
     HttpClientModule,
     MatFormFieldModule, MatInputModule, MatIconModule,
     FormsModule, MatNativeDateModule, MatDatepickerModule,
     BrowserAnimationsModule, MatTableModule,
-    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, ReactiveFormsModule, MatCardModule
+    MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, ReactiveFormsModule, MatCardModule, MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
